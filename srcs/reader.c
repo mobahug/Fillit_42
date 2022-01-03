@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/03 15:18:54 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/03 15:24:54 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,20 @@ int	ft_display_file(char *str)
 
 int	main(int argc, char **argv)
 {
-	/*if (argc != 2)
+	if (argc != 2)
 	{
 		if (argc < 2)
 		{
 			ft_putstr("error");
-			//exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 		if (argc > 2)
 		{
 			ft_putstr("error");
-			//exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
-	}*/
+	}
 	if (ft_display_file(argv[1]) == 1)
 		return (1);
-	//if (valid(argv[1]) == 1)
-		//return (1);
 	return (0);
 }
