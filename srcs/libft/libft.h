@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/21 15:08:34 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/03 10:42:40 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,6 @@ int		ft_number_lenght(long nb);
 */
 
 int		get_next_line(const int fd, char **line);
+
 
 #endif
