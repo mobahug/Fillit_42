@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit_bw.h                                        :+:      :+:    :+:   */
+/*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/04 16:36:28 by wdonnell         ###   ########.fr       */
+/*   Created: 2022/01/04 12:20:07 by wdonnell          #+#    #+#             */
+/*   Updated: 2022/01/04 16:36:33 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include <stdio.h>
+#include <stdint.h>
 
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int main()
+{
+	uint16_t test = 19968;
+	int i;
+	int size;
+	uint16_t flag = 32768;
 
-# define BUFF_SIZE 21
+	//uint16_t flag = 1;
+
+	//set b1t
+	//tetri |= 1 << 1 % 16;
+
+	size = 16;
+	i = 0;
+	while (i < size)
+	{
+		if (test & flag)
+			printf("1 ");
+		else
+			printf("0 ");
+		if (i % 4  == 3)
+			printf("\n");
+		flag >>= 1;
+		i++;
+	}
 
 
-//readin
-t_tetri	*readin(t_queue *queue, int *valid_count, int fd);
-int		validate(char buf[BUFF_SIZE], t_queue *queue, int *valid_count);
-int		check_connections(char buf[BUFF_SIZE], int i);
-
-
-#endif
+	return (0);
+}
