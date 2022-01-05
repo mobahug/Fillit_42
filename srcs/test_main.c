@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "fillit_bw.h"
 
+
 uint64_t encode()
 {
 	uint64_t tetri = 0;
@@ -49,6 +50,28 @@ void print_tetri(uint64_t tetri)
 		i++;
 	}
 }
+void print_real_tet(uint64_t tetri)
+{
+	int i;
+	int size;
+	//uint64_t flag = 2147483648
+	uint64_t flag = 1;
+
+	flag <<= 63;
+	size = 64;
+	i = 0;
+	while (i < size)
+	{
+		if (tetri & flag)
+			printf("1 ");
+		else
+			printf("0 ");
+		if (i % 16  == 15)
+			printf("\n");
+		flag >>= 1;
+		i++;
+	}
+}
 
 void print_map(uint16_t map[16])
 {
@@ -62,9 +85,9 @@ void print_map(uint16_t map[16])
 		while (j < 16)
 		{
 			if (map[i] & flag)
-				printf("1 ");
+				printf("1");
 			else
-				printf("0 ");
+				printf("0");
 			flag >>= 1;
 			j++;
 		}
@@ -74,22 +97,36 @@ void print_map(uint16_t map[16])
 	}
 }
 
+/*
+void put_tetri(uint64_t *tetri, uint16_t *map)
+{
+	uint16_t test = 61440;
+	*map |= test;
+}
+*/
 int main()
 {
 	uint64_t tetri = encode();
+	//uint64_t test = 1;
 	uint16_t map[16];
 
-	ft_bzero(map, 256);
+	ft_bzero(map, sizeof(uint16_t) * 16);
+	//print_map(map);
+	//uint16_t test = 61440;
+	//*(map) |= test;
+	//*(uint64_t *)(map) = tetri;
+	*(uint64_t *)(map) ~= tetri;
 	print_map(map);
 	printf("\n");
+	
+	//print_real_tet(tetri);
 	print_tetri(tetri);
+	
 	printf("\n");
-	tetri <<= 45;
-	print_tetri(tetri);
-	printf("\n");
-	printf("\n");
-
-
-
+	//tetri <<= 45;
+	//print_tetri(tetri);
+	//printf("\n");
+	//printf("\n");
+	
 	return (0);
 }

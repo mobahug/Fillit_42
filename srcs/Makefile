@@ -18,13 +18,14 @@ $(OBJS) : $(SRCS)
 	$(CC) $(FLAGS) $(MORE_FLAGS) -c $(SRCS) -I $(HDRS)
 
 
+
 clean:
 	rm -f $(OBJS)
-	$(MAKE) -C $(LIB) clean
+#	$(MAKE) -C $(LIB) clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIB) fclean
+#	$(MAKE) -C $(LIB) fclean
 
 re: fclean all
 
