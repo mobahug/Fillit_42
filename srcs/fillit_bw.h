@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/04 16:36:28 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/05 13:54:32 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-# define BUFF_SIZE 21
+//# define BUFF_SIZE 21
 
+////# define UINT64_MAX 0xFFFFFFFFFFFFFFFF
+//# define UINT16_MAX 0xFFFF
 
-//readin
-t_tetri	*readin(t_queue *queue, int *valid_count, int fd);
-int		validate(char buf[BUFF_SIZE], t_queue *queue, int *valid_count);
-int		check_connections(char buf[BUFF_SIZE], int i);
 
 
 #endif

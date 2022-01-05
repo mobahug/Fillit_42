@@ -1,9 +1,10 @@
-NAME = fillit
+NAME = tester
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-SRCS = main.c readin.c util.c solve.c queue.c
-OBJS = main.o readin.o util.o solve.o queue.o
-HDRS = fillit.h
+MORE_FLAGS = -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
+SRCS = test_main.c 
+OBJS = test_main.o 
+HDRS = fillit_bw.h
 LIB = libft/
 
 all:
@@ -14,7 +15,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
 
 $(OBJS) : $(SRCS)
-	$(CC) $(FLAGS) -c $(SRCS) -I $(HDRS)
+	$(CC) $(FLAGS) $(MORE_FLAGS) -c $(SRCS) -I $(HDRS)
 
 
 clean:
