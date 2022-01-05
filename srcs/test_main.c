@@ -3,10 +3,10 @@
 #include "fillit_bw.h"
 
 
-uint64_t encode()
+uint64_t encode(char input[16])
 {
 	uint64_t tetri = 0;
-	char input[16] = {'.','#','.','.', '#','#','#','.', '.','.','.','.', '.','.','.','.'};
+	
 	int i;
 	int count;
 	uint64_t pow = 1;
@@ -77,7 +77,7 @@ void print_map(uint16_t map[16])
 {
 	int i = 0;
 	int j = 0;
-	uint16_t flag = 0xFFFF;
+	uint16_t flag = 32768;
 
 	while (i < 16)
 	{
@@ -85,13 +85,13 @@ void print_map(uint16_t map[16])
 		while (j < 16)
 		{
 			if (map[i] & flag)
-				printf("1");
+				printf("1 ");
 			else
-				printf("0");
+				printf("0 ");
 			flag >>= 1;
 			j++;
 		}
-		flag = 0xFFFF;
+		flag = 32768;
 		printf("\n");
 		i++;
 	}
@@ -106,23 +106,43 @@ void put_tetri(uint64_t *tetri, uint16_t *map)
 */
 int main()
 {
-	uint64_t tetri = encode();
-	//uint64_t test = 1;
-	uint16_t map[16];
-
-	ft_bzero(map, sizeof(uint16_t) * 16);
-	//print_map(map);
-	//uint16_t test = 61440;
-	//*(map) |= test;
-	//*(uint64_t *)(map) = tetri;
-	*(uint64_t *)(map) ~= tetri;
-	print_map(map);
-	printf("\n");
 	
+	char input[16] = {'.','#','.','.', '#','#','#','.', '.','.','.','.', '.','.','.','.'};
+	char input2[16] = {'#','#','.','.', '.','#','.','.', '.','#','.','.', '.','.','.','.'};
+	uint16_t map[16];
+	uint64_t tetri = encode(input);
+	uint64_t tetri2 = encode(input2);
+	ft_bzero(map, sizeof(uint16_t) * 16);
 	//print_real_tet(tetri);
 	print_tetri(tetri);
-	
 	printf("\n");
+	print_tetri(tetri2);
+	printf("\n");
+	//uint16_t test = 61440;
+	//*(map) |= test;
+	//tetri <<= 13;
+	*(uint64_t *)(map) ^= (tetri2 << 14);
+	//*(uint64_t *)(map) ^= (tetri << 13);
+
+	printf("1 means overlap, 0 mean free\n");
+	if ((*(uint64_t *)(map)) & ((tetri << 12)))
+		printf("1\n");
+	else
+	{
+		printf("0\n");
+		*(uint64_t *)(map) ^= (tetri << 12);
+	}
+
+	//*(map + 1) = test;
+	//printf("\n");
+	//printf("\n");
+	print_map(map);
+	//printf("\n");
+	
+	//print_real_tet(tetri);
+	//print_tetri(tetri);
+	
+
 	//tetri <<= 45;
 	//print_tetri(tetri);
 	//printf("\n");
@@ -130,3 +150,17 @@ int main()
 	
 	return (0);
 }
+
+/*
+	uint16_t i = 1;
+	while (i < 17)
+	{
+		map[i - 1] = i;
+		i++;
+	}
+	i = 0;
+	while (i < 15)
+		printf("%d ", map[i++]);
+	printf("\n");
+	printf("\n");
+	*/
