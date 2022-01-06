@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/06 13:39:35 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:30:23 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	validate(char *str, ssize_t ret)
 	{
 		if (i % 5 != 4 && (str[i] != '#' && str[i] != '.'))
 		{
+			printf("\n(%d)first_pass\n", i);
 			return (0);
 		}
 		else if (i % 5 == 4 && str[i] != '\n')
@@ -64,14 +65,17 @@ int	validate(char *str, ssize_t ret)
 		if (str[i] == '#' && ++hash_counter < 5)
 		{
 			total_connections += check_connection(str, i);
+			printf("(%d)\n", i);
 		}
 		i++;
 	}
-	/*if (!(total_connections > 5 && hash_counter == 4))
+	if ((total_connections != 6 || total_connections != 8) && hash_counter != 4)
 	{
-		printf("error12\n");
-		return (0);
-	}*/ // add the pieces if its valid
+		ft_putstrcolor("shape_wrong\n", "red");
+		//return (0);
+	} // add the pieces if its valid
+	else
+		ft_putstrcolor("shape_right\n", "green");
 	return (1);
 }
 
@@ -86,9 +90,11 @@ int	reader(char *str, int fd)
 		buffer[ret] = '\0';
 		if (!(validate(buffer, ret)))
 		{
-			ft_putstr("error");
-			exit(EXIT_FAILURE);
+			ft_putstrcolor("error\n", "red");
+			//exit(EXIT_FAILURE);
 		}
+		else
+			ft_putstrcolor("success\n", "green");
 		ret = read(fd, &buffer, BUFF_SIZE);
 	}
 	return(0);
