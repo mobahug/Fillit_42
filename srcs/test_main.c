@@ -116,14 +116,14 @@ int main()
 	//print_real_tet(tetri);
 	print_tetri(tetri);
 	printf("\n");
-	print_tetri(tetri2);
+	print_tetri(tetri2 << 16);
 	printf("\n");
 	//uint16_t test = 61440;
 	//*(map) |= test;
 	//tetri <<= 13;
-	*(uint64_t *)(map) ^= (tetri2 << 14);
+	//*(uint64_t *)(map) ^= (tetri2 << 14);
 	//*(uint64_t *)(map) ^= (tetri << 13);
-
+/*
 	printf("1 means overlap, 0 mean free\n");
 	if ((*(uint64_t *)(map)) & ((tetri << 12)))
 		printf("1\n");
@@ -132,11 +132,11 @@ int main()
 		printf("0\n");
 		*(uint64_t *)(map) ^= (tetri << 12);
 	}
-
+*/
 	//*(map + 1) = test;
 	//printf("\n");
 	//printf("\n");
-	print_map(map);
+	//print_map(map);
 	//printf("\n");
 	
 	//print_real_tet(tetri);
