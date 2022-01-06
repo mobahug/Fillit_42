@@ -2,13 +2,15 @@ NAME = tester
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 MORE_FLAGS = -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
-SRCS = test_main.c 
-OBJS = test_main.o 
+SRCS = old_main.c encode.c readin_old.c
+OBJS = old_main.o encode.o readin_old.o
+#SRCS = test_main.c
+#OBJS = test_main.o
 HDRS = fillit_bw.h
 LIB = libft/
 
 all:
-	$(MAKE) -C $(LIB)
+#	$(MAKE) -C $(LIB)
 	$(MAKE) $(NAME)
 
 $(NAME) : $(OBJS)

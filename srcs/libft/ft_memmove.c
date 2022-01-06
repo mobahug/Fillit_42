@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 09:04:51 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/11/29 07:29:45 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/04 10:20:08 by wdonnell          #+#    #+#             */
+/*   Updated: 2021/11/17 09:40:30 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dest;
-	unsigned char	*source;
+	unsigned char		*dp;
+	const unsigned char	*sp;
+	size_t				i;
 
-	dest = (unsigned char *)dst;
-	source = (unsigned char *)src;
-	if (dest == 0 && source == 0)
-		return (0);
-	if (source < dest)
+	dp = (unsigned char *)dst;
+	sp = (const unsigned char *)src;
+	if ((!dst && !src))
+		return (NULL);
+	i = 0;
+	if (dp < sp)
 	{
-		while (len--)
-			dest[len] = source[len];
-		return ((unsigned char *)dst);
-	}
-	else if (source > dest)
-	{
-		while (len--)
+		while (i < len)
 		{
-			*dest = *source;
-			dest++;
-			source++;
+			dp[i] = sp[i];
+			i++;
 		}
-		return ((unsigned char *)dst);
 	}
-	return (0);
+	else
+	{
+		while (len-- > 0)
+			dp[len] = sp[len];
+	}
+	return (dst);
 }

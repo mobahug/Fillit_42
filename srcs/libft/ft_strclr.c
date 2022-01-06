@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 08:02:53 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/11/16 10:10:09 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/04 14:59:48 by wdonnell          #+#    #+#             */
+/*   Updated: 2021/11/18 11:54:07 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,7 @@
 
 void	ft_strclr(char *s)
 {
-	int	index;
-
-	if (s != 0)
-	{
-		index = 0;
-		while (s[index] != '\0')
-		{
-			s[index] = '\0';
-			index++;
-		}
-	}
+	if (!s)
+		return ;
+	ft_bzero(s, ft_strlen(s) + 1);
 }

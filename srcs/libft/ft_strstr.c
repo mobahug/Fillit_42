@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 10:20:26 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/11/15 09:54:44 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/04 10:24:01 by wdonnell          #+#    #+#             */
+/*   Updated: 2021/11/17 09:41:00 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 char	*ft_strstr(const char *haystack, const char *needle)
 {
 	int		i;
-	int		j;
-	char	*s;
+	char	*p;
+	size_t	len;
 
-	i = 0;
-	j = 0;
-	s = (char *)haystack;
+	p = (char *)haystack;
 	if (*needle == '\0')
-		return (s);
-	while (s[i] != '\0')
+		return (p);
+	len = ft_strlen(needle);
+	i = 0;
+	while (p[i] != '\0')
 	{
-		j = 0;
-		while (s[i + j] == needle[j] && s[i + j] != '\0')
+		if (p[i] == needle[0])
 		{
-			if (needle[j + 1] == '\0')
-				return (&s[i]);
-			j++;
+			if (ft_strncmp(&p[i], needle, len) == 0)
+				return (&p[i]);
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

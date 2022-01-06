@@ -3,6 +3,20 @@
 #include "fillit_bw.h"
 
 
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+	size_t			i;
+
+	ptr = s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+}
+
 uint64_t encode(char input[16])
 {
 	uint64_t tetri = 0;
@@ -26,7 +40,7 @@ uint64_t encode(char input[16])
 		pow *= 2;
 		i++;
 	}
-	return (tetri);
+	return (tetri << 13);
 }
 
 void print_tetri(uint64_t tetri)
@@ -50,7 +64,7 @@ void print_tetri(uint64_t tetri)
 		i++;
 	}
 }
-void print_real_tet(uint64_t tetri)
+void print_real_tetri(uint64_t tetri)
 {
 	int i;
 	int size;
@@ -97,47 +111,43 @@ void print_map(uint16_t map[16])
 	}
 }
 
-/*
-void put_tetri(uint64_t *tetri, uint16_t *map)
-{
-	uint16_t test = 61440;
-	*map |= test;
-}
-*/
+
 int main()
 {
 	
 	char input[16] = {'.','#','.','.', '#','#','#','.', '.','.','.','.', '.','.','.','.'};
-	char input2[16] = {'#','#','.','.', '.','#','.','.', '.','#','.','.', '.','.','.','.'};
+	//char input2[16] = {'#','#','.','.', '.','#','.','.', '.','#','.','.', '.','.','.','.'};
+	//char input3[16] = {'.','.','.','.',  '.','.','.','.',  '.','.','.','.',  '#','#','#','#'};
 	uint16_t map[16];
 	uint64_t tetri = encode(input);
-	uint64_t tetri2 = encode(input2);
+	//uint64_t tetri2 = encode(input2);
 	ft_bzero(map, sizeof(uint16_t) * 16);
 	//print_real_tet(tetri);
 	print_tetri(tetri);
 	printf("\n");
-	print_tetri(tetri2 << 16);
-	printf("\n");
+	//print_tetri(tetri2 << 16);
+	//printf("\n");
 	//uint16_t test = 61440;
 	//*(map) |= test;
 	//tetri <<= 13;
 	//*(uint64_t *)(map) ^= (tetri2 << 14);
-	//*(uint64_t *)(map) ^= (tetri << 13);
+	*(uint64_t *)(map) ^= (tetri);
 /*
 	printf("1 means overlap, 0 mean free\n");
-	if ((*(uint64_t *)(map)) & ((tetri << 12)))
+	if ((*(uint64_t *)(map + 6)) & ((tetri2 << 10)))
 		printf("1\n");
 	else
 	{
 		printf("0\n");
-		*(uint64_t *)(map) ^= (tetri << 12);
+		*(uint64_t *)(map + 6) ^= (tetri2 << 10);
 	}
 */
+
 	//*(map + 1) = test;
 	//printf("\n");
 	//printf("\n");
-	//print_map(map);
-	//printf("\n");
+	print_map(map);
+	printf("\n");
 	
 	//print_real_tet(tetri);
 	//print_tetri(tetri);

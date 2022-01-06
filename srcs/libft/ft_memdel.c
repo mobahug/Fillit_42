@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 07:38:44 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/11/10 15:08:33 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/04 14:46:16 by wdonnell          #+#    #+#             */
+/*   Updated: 2021/11/18 11:47:44 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	if (ap != NULL)
+	if (ap == NULL)
+		return ;
+	if (*ap && ap)
 	{
 		free(*ap);
 		*ap = NULL;
