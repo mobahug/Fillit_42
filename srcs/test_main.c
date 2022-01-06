@@ -40,7 +40,7 @@ uint64_t encode(char input[16])
 		pow *= 2;
 		i++;
 	}
-	return (tetri << 13);
+	return (tetri);
 }
 
 void print_tetri(uint64_t tetri)
@@ -116,11 +116,11 @@ int main()
 {
 	
 	char input[16] = {'.','#','.','.', '#','#','#','.', '.','.','.','.', '.','.','.','.'};
-	//char input2[16] = {'#','#','.','.', '.','#','.','.', '.','#','.','.', '.','.','.','.'};
+	char input2[16] = {'#','#','.','.', '.','#','.','.', '.','#','.','.', '.','.','.','.'};
 	//char input3[16] = {'.','.','.','.',  '.','.','.','.',  '.','.','.','.',  '#','#','#','#'};
 	uint16_t map[16];
 	uint64_t tetri = encode(input);
-	//uint64_t tetri2 = encode(input2);
+	uint64_t tetri2 = encode(input2);
 	ft_bzero(map, sizeof(uint16_t) * 16);
 	//print_real_tet(tetri);
 	print_tetri(tetri);
@@ -131,17 +131,17 @@ int main()
 	//*(map) |= test;
 	//tetri <<= 13;
 	//*(uint64_t *)(map) ^= (tetri2 << 14);
-	*(uint64_t *)(map) ^= (tetri);
-/*
+	*(uint64_t *)(map) ^= (tetri << 6);
+
 	printf("1 means overlap, 0 mean free\n");
-	if ((*(uint64_t *)(map + 6)) & ((tetri2 << 10)))
+	if ((*(uint64_t *)(map + 4)) & ((tetri2 << 1)))
 		printf("1\n");
 	else
 	{
 		printf("0\n");
-		*(uint64_t *)(map + 6) ^= (tetri2 << 10);
+		*(uint64_t *)(map + 4) ^= (tetri2 << 1 );
 	}
-*/
+
 
 	//*(map + 1) = test;
 	//printf("\n");
