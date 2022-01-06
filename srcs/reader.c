@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/05 15:50:06 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/06 13:39:35 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,103 +14,68 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-/*
-int	valid(char *str, int ret)
-{
-	int		i = 4;
-	int		j = 1;
-
-
-	while (j < 5)
-	{
-
-		while (i < 21 * j)
-		{
-
-			if (str[i] != '\n' && str[i] != '\0')
-			{
-				printf("%d%c", i, str[i]);
-				return (1);
-			}
-			i += 5;
-		}
-		j++;
-		i += 1;
-	}
-	return (0);
-}
-*/
-
-int	check_connection(char *str)
+int	check_connection(char *str, int i)
 {
 	int	connections;
-	int	i;
 
-	i = 0;
 	connections = 0;
 	while (i < 19)
 	{
-		if (i == '#')
+		if (i >= 1 && str[i - 1] == '#')
 		{
-			if (i >= 1 && str[i - 1] == '#')
-			{
-				connections++;
-			}
-			if (i < 19 && str[i + 1] == '#')
-			{
-				connections++;
-			}
-			if(i >= 5 && str[i - 5] == '#')
-			{
-				connections++;
-			}
-			if (i < 15 && str[i + 5] == '#')
-			{
-				connections++;
-			}
+			connections++;
 		}
-		printf("(%d)index\n", i);
-		printf("(%d)connections\n\n", connections);
+		if (i < 19 && str[i + 1] == '#')
+		{
+			connections++;
+		}
+		if(i >= 5 && str[i - 5] == '#')
+		{
+			connections++;
+		}
+		if (i < 15 && str[i + 5] == '#')
+		{
+			connections++;
+		}
 		i++;
 	}
-	printf("(%d)here\n", i);
-	if (connections == 6 || connections == 8)
-	{
-		printf("%dsecond here\n", connections);
-		return (1);
-	}
-	ft_putstr("error\n");
-	return(0);
+	return(connections);
 }
 
 int	validate(char *str, ssize_t ret)
 {
 	int	i;
+	int	hash_counter;
+	int	total_connections;
 
+	hash_counter = 0;
+	total_connections = 0;
 	i = 0;
 	while (i < 20)
 	{
-		if (i % 5 != 4 && (i == '#' || i == '.'))
+		if (i % 5 != 4 && (str[i] != '#' && str[i] != '.'))
 		{
-			//printf("first");
 			return (0);
 		}
-		else if (i % 5 == 4 && (i == '\n' || i == '\0'))
+		else if (i % 5 == 4 && str[i] != '\n')
 		{
-			//printf("second");
 			return (0);
+		}
+		if (str[i] == '#' && ++hash_counter < 5)
+		{
+			total_connections += check_connection(str, i);
 		}
 		i++;
 	}
-	if (!(check_connection(str)))
+	/*if (!(total_connections > 5 && hash_counter == 4))
 	{
-		//printf("error12\n");
+		printf("error12\n");
 		return (0);
-	}
+	}*/ // add the pieces if its valid
 	return (1);
 }
 
-int	ft_display_file(char *str, int fd)
+int	reader(char *str, int fd)
 {
 	char		buffer[BUFF_SIZE + 1];
 	ssize_t		ret;
@@ -119,18 +84,12 @@ int	ft_display_file(char *str, int fd)
 	while (ret)
 	{
 		buffer[ret] = '\0';
-		//write(1, &buffer, ret);
-		if (validate(buffer, ret))
+		if (!(validate(buffer, ret)))
 		{
-			printf("success\n");
-			return (1);
+			ft_putstr("error");
+			exit(EXIT_FAILURE);
 		}
-		else
-		{
-			printf("Invalid!\n");
-			return (0);
-		}
-		ret = read(fd, &buffer, 1);
+		ret = read(fd, &buffer, BUFF_SIZE);
 	}
 	return(0);
 }
@@ -155,7 +114,7 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-	if (ft_display_file(argv[1], fd) == 1)
+	if (reader(argv[1], fd) == 1)
 		return (1);
 	if (close(fd) == -1)
 		return (1);
