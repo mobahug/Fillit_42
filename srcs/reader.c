@@ -6,13 +6,14 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/07 09:50:45 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:45:14 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <fcntl.h>
 #include <stdio.h>
+#include "fillit_bw.h"
 
 int	check_connection(char *str, int i)
 {
@@ -42,7 +43,7 @@ int	check_connection(char *str, int i)
 	return(connections);
 }
 
-int	validate(char *str, ssize_t ret)
+int	validate(char *str, t_tetri tetri[])
 {
 	int	i;
 	int	hash_counter;
@@ -75,13 +76,15 @@ int	validate(char *str, ssize_t ret)
 	{
 		ft_putstrcolor("shape_wrong\n", "red");
 			return (0);
-	} // add the pieces if its valid
+	} // add the pieces if its valid gets buf and arr*
 	else
 		ft_putstrcolor("shape_right\n", "green");
+		tetri = NULL;
+		//addtolist (buf)
 	return (1);
 }
 
-int	reader(char *str, int fd)
+int	reader(int fd, t_tetri tetri[26])
 {
 	char		buffer[BUFF_SIZE + 1];
 	ssize_t		ret;
@@ -89,10 +92,14 @@ int	reader(char *str, int fd)
 	ret = read(fd, &buffer, BUFF_SIZE);
 	while (ret)
 	{
+		if (ret == 21 && buffer[20] != '\n')
+		{
+			return (0);
+		}
 		printf("\n\n\n\n\n\n\n%s", buffer);
 		printf("%d\n", BUFF_SIZE);
 		buffer[ret] = '\0';
-		if (!(validate(buffer, ret)))
+		if (!(validate(buffer, tetri))) //arr pointer
 		{
 			return (0);
 			//ft_putstrcolor("Invalid!\n", "red");
@@ -104,37 +111,12 @@ int	reader(char *str, int fd)
 	return(1);
 }
 
-int	main(int argc, char **argv)
-{
-	int		fd;
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (1);
-	if (argc != 2)
-	{
-		if (argc < 2)
-		{
-			ft_putstrcolor("error!\n", "red");
-			exit(EXIT_FAILURE);
-		}
-		if (argc > 2)
-		{
-			ft_putstrcolor("error!\n", "red");
-			exit(EXIT_FAILURE);
-		}
-	}
-	if (reader(argv[1], fd))
-	{
-		ft_putstrcolor("Sucess!\n", "green");
-		return (0);
-	}
-	else
-	{
-		ft_putstrcolor("error!\n", "red");
-		return (1);
-	}
-	if (close(fd) == -1)
-		return (1);
-	return (0);
+/*void add_to_arr(char *buf, int count)
+{
+
+
+	get_shape(buf);
+	encode(buf);
 }
+*/

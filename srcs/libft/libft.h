@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/06 16:07:36 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:24:21 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFF_SIZE 21
+//# define BUFF_SIZE 21
 # define FD_SIZE 4096
 
 /*
@@ -140,7 +140,7 @@ int		ft_number_lenght(long nb);
 **GET_NEXT_LINE
 */
 
-int		get_next_line(const int fd, char **line);
+//int		get_next_line(const int fd, char **line);
 
 
 #endif
