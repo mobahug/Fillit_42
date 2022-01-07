@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit_bw.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/06 16:21:38 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:37:43 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "libft/libft.h"
+# include <stdint.h>
 
 # define BUFF_SIZE 21
 
 typedef struct s_tetri
 {
-	uint64_t		value;
+	uint64_t		code;
 	int				count;
 	int				left;
 	int				right;
@@ -30,19 +31,9 @@ typedef struct s_tetri
 	struct s_tetri	*next;
 }				t_tetri;
 
-typedef struct s_queue
-{
-	struct s_tetri	*head;
-	struct s_tetri	*tail;
-}				t_queue;
+int	check_connection(char *str, int i);
+int	validate(char *str, t_tetri tetri[]);
+int	reader(int fd, t_tetri tetri[26]);
 
-void	get_shape(char buf[BUFF_SIZE], t_tetri *temp);
-int	add_to_queue(char buf[BUFF_SIZE], t_queue *queue, int *count);
-
-t_tetri	*readin(t_queue *queue, int *valid_count, int fd);
-int		validate(char buf[BUFF_SIZE], t_queue *queue, int *valid_count);
-int		check_connections(char buf[BUFF_SIZE], int i);
-
-void	free_list(t_tetri *head);
 
 #endif

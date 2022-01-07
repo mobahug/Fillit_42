@@ -5,8 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2021/11/02 10:23:17 by wdonnell          #+#    #+#             */
 /*   Updated: 2021/11/24 15:00:20 by wdonnell         ###   ########.fr       */
+=======
+/*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
+/*   Updated: 2022/01/07 13:24:21 by ghorvath         ###   ########.fr       */
+>>>>>>> Polishing
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +20,41 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+<<<<<<< HEAD
 # include <string.h>
+=======
+
+//# define BUFF_SIZE 21
+# define FD_SIZE 4096
+
+/*
+**DEFINE_COLORS
+*/
+
+# define NORMAL		"\x1B[0m"
+# define RED		"\x1B[31m"
+# define GREEN		"\x1B[32m"
+# define YELLOW		"\x1B[33m"
+# define BLUE		"\x1B[34m"
+# define MAGENTA	"\x1B[35m"
+# define CYAN		"\x1B[36m"
+# define WHITE		"\x1B[37m"
+
+/*
+**STRUCTURES
+*/
+
+typedef struct s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}				t_list;
+
+/*
+**FUNCTIONS
+*/
+>>>>>>> Polishing
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -69,5 +108,28 @@ char	*ft_strnew(size_t size);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s);
+<<<<<<< HEAD
+=======
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+
+/*
+**EXTRA_FUNCTIONS
+*/
+
+void	ft_color(char *s);
+void	ft_putstrcolor(char *str, char *color);
+void	ft_putcharcolor(char c, char *color);
+size_t	ft_countwords(char const *s, char c);
+void	ft_free_words(char **words, size_t i);
+int		ft_number_lenght(long nb);
+
+/*
+**GET_NEXT_LINE
+*/
+
+//int		get_next_line(const int fd, char **line);
+
+>>>>>>> Polishing
 
 #endif
