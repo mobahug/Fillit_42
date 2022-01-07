@@ -113,7 +113,7 @@ int main()
 	//uint16_t test = 61440;
 	//*(map) |= test;
 	//tetri <<= 13;
-	*(uint64_t *)(map ) ^= (tetri);
+	*(uint64_t *)(map + 6) ^= (tetri >> 5);
 	print_map(map);
 	printf("\n");
 	
