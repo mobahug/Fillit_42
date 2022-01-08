@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   encode.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: willdonnelly <willdonnelly@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/06 16:24:07 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/08 12:09:58 by willdonnell      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,13 @@
 
 //get top-leftmost placement of tetri string 16
 
-int	add_to_queue(char buf[BUFF_SIZE], t_queue *queue, int *count)
+void add_tetri(t_tetri *tetri, char *buf, int count)
 {
-	t_tetri	*temp;
-
-	temp = (t_tetri *)malloc(sizeof(t_tetri));
-	if (!temp)
-		return (0);
-	
-	temp->right = 0;
-	temp->left = 0;
-	temp->stop = 0;
-	get_shape(buf, temp);
-	temp->count = *count;
-	temp->next = NULL;
-	if (queue->tail == NULL)
-	{
-		queue->tail = temp;
-		queue->head = temp;
-	}
-	else
-	{
-		(queue->tail)->next = temp;
-		queue->tail = temp;
-	}
-	return (1);
+	get_shape(buf, tetri, count);
+	encode(buf, tetri, count);
 }
-void	get_shape(char buf[BUFF_SIZE], t_tetri *temp)
+
+void	get_shape(char *buf, t_tetri *tetri, int count)
 {
 	int	i;
 	int	j;
@@ -58,35 +38,60 @@ void	get_shape(char buf[BUFF_SIZE], t_tetri *temp)
 			if ((j - i) % 5 == 0)
 			{
 				//ft_strcat(temp->rule, "d");
-				temp->stop += 4;
+				tetri[count].stop += 4;
 			}
 				
 			else if ((j - i) % 5 == 1)
 			{
 				//ft_strcat(temp->rule, "r");
-				if (++x > temp->right)
-					(temp->right)++;
+				if (++x > tetri[count].right)
+					(tetri[count].right)++;
 			}
 			else if ((j - i) % 5 == 3)
 			{
 				//ft_strcat(temp->rule, "2");
-				temp->stop += 4;
+				tetri[count].stop += 4;
 				x -= 2;
-				if (x < temp->left)
-					temp->left = x;
+				if (x < tetri[count].left)
+					tetri[count].left = x;
 			}
 			else if ((j - i) % 5 == 4)
 			{
 				//ft_strcat(temp->rule, "1");
-				temp->stop += 4;
-				if (--x < temp->left)
-					temp->left = x;
+				tetri[count].stop += 4;
+				if (--x < tetri[count].left)
+					tetri[count].left = x;
 			}
 			i = j;
 		}
 		j++;
 	}
-	temp->stop += temp->right;
+	tetri[count].stop += tetri[count].right;
 	
 }
 
+void encode(char *buf, t_tetri *tetri, int index)
+{
+	uint64_t code = 0;
+	
+	int i;
+	int count;
+	uint64_t pow = 1;
+
+	i = 0;
+	count = 3;
+	while (i < 64)
+	{
+		if (i % 16 > 11)
+		{
+			if (buf[count] == '#')
+				code += pow;
+			if (count == 0 || count == 5 || count == 10)
+				count += 9;
+			count--;
+		}
+		pow *= 2;
+		i++;
+	}
+	tetri[index].code = code;
+}

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "fillit_bw.h"
-
+#include <stdint.h>
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -65,29 +64,26 @@ void print_map(uint16_t map[16])
 	}
 }
 
-uint64_t encode(char input[16])
+uint64_t encode(char input[20])
 {
 	uint64_t tetri = 0;
 	
 	int i;
-	int count;
+	int index;
 	uint64_t pow = 1;
 
 	i = 0;
-	//count = 15;
-	count = 3;
+	index = 3;
 	while (i < 64)
 	{
 		if (i % 16 > 11)
 		{
-			if (input[count] == '#')
+			if (input[index] == '#')
 				tetri += pow;
-			//count--;
-			if (count == 0 || count == 4 || count == 8)
-				count += 8;
-			count--;
+			if (index == 0 || index  == 5 || index  == 10)
+				index  += 9;
+			index --;
 		}
-		
 		pow *= 2;
 		i++;
 	}
@@ -98,7 +94,10 @@ int main()
 {
 	
 	//char input[16] = {'.','#','.','.',  '#','#','#','.',  '.','.','.','.',  '.','.','.','.'};
-	char input[16] = {'#','#','.','.',  '.','#','.','.', '.','#','.','.', '.','#','.','.'};
+	char input[20] = {'#','#','.','.','\n',\
+					  '.','#','.','.','\n',\
+					  '.','#','.','.','\n',\
+					  '.','.','.','.','\n'};
 	//char input[16] = {'#','.','.','.',  '.','.','.','.',  '.','.','.','.',  '.','.','.','.'};
 	//char input4[16] = {'#','.','.','.',  '#','.','.','.',  '#','.','.','.',  '#','.','.','.'};
 	uint16_t map[16];
@@ -113,7 +112,7 @@ int main()
 	//uint16_t test = 61440;
 	//*(map) |= test;
 	//tetri <<= 13;
-	*(uint64_t *)(map + 6) ^= (tetri >> 5);
+	*(uint64_t *)(map) ^= (tetri);
 	print_map(map);
 	printf("\n");
 	

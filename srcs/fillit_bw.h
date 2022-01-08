@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit_bw.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: willdonnelly <willdonnelly@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/07 13:37:43 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:31:12 by willdonnell      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ typedef struct s_tetri
 	int				left;
 	int				right;
 	int				stop;
-	struct s_tetri	*next;
 }				t_tetri;
 
 int	check_connection(char *str, int i);
-int	validate(char *str, t_tetri tetri[]);
-int	reader(int fd, t_tetri tetri[26]);
+int	validate(char *str, t_tetri *tetri);
+int	reader(int fd, t_tetri *tetri);
+
+void add_tetri(t_tetri *tetri, char *buf, int count);
+void encode(char *buf, t_tetri *tetri, int index);
+void	get_shape(char *buf, t_tetri *tetri, int count);
 
 
 #endif
