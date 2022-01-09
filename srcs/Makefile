@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: willdonnelly <willdonnelly@student.42.f    +#+  +:+       +#+         #
+#    By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 12:35:34 by ghorvath          #+#    #+#              #
-#    Updated: 2022/01/08 11:31:14 by willdonnell      ###   ########.fr        #
+#    Updated: 2022/01/09 14:35:51 by wdonnell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = tester
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 MORE_FLAGS = -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
-SRCS = main.c reader.c encode.c
-OBJS = main.o reader.o encode.o
+SRCS = main.c reader.c encode.c solve.c
+OBJS = main.o reader.o encode.o solve.o
 HDRS = fillit_bw.h
 LIB = libft/
 

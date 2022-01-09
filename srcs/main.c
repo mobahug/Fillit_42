@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willdonnelly <willdonnelly@student.42.f    +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/08 12:16:19 by willdonnell      ###   ########.fr       */
+/*   Updated: 2022/01/09 14:35:36 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ static void print_map(uint16_t map[16])
 		printf("\n");
 		i++;
 	}
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
-	int		fd;
-	t_tetri tetri[26];
-	uint16_t map[16];
+	int			fd;
+	int			count;
+	t_tetri		tetri[26];
+	uint16_t	map[16];
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
@@ -54,16 +56,15 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-	if (!reader(fd, tetri))
+	count = 0;
+	if (!reader(fd, tetri, &count))
 	{
 		ft_putstrcolor("error!\n", "red");
 		return (0);
 	}
-	ft_bzero(map, sizeof(uint16_t) * 16);
-	*(uint64_t *)(map) ^= (tetri[0].code);
+	
+	solve(tetri, &count, map);
 	print_map(map);
-	printf("\n");
-	//solve(tetri[]);
 	//print(tetri[]);
 	close(fd);
 	return (0);

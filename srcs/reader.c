@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willdonnelly <willdonnelly@student.42.f    +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/08 12:15:43 by willdonnell      ###   ########.fr       */
+/*   Updated: 2022/01/09 14:52:28 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ int	check_connection(char *str, int i)
 	return(connections);
 }
 
-int	validate(char *str, t_tetri *tetri)
+int	validate(char *str, t_tetri *tetri, int *count)
 {
 	int	i;
 	int	hash_counter;
 	int	total_connections;
-	static int count = 0;
 
 	hash_counter = 0;
 	total_connections = 0;
@@ -70,15 +69,15 @@ int	validate(char *str, t_tetri *tetri)
 	else
 	{
 		ft_putstrcolor("shape_right\n", "green");
-		if (count > 25)
+		if (*count > 25)
 			return (0);
 		add_tetri(tetri, str, count);
-		count++;
+		(*count)++;
 	}
 	return (1);
 }
 
-int	reader(int fd, t_tetri *tetri)
+int	reader(int fd, t_tetri *tetri, int *count)
 {
 	char		buffer[BUFF_SIZE + 1];
 	ssize_t		ret;
@@ -87,30 +86,11 @@ int	reader(int fd, t_tetri *tetri)
 	while (ret)
 	{
 		if (ret == 21 && buffer[20] != '\n')
-		{
 			return (0);
-		}
-		printf("\n\n\n\n\n\n\n%s", buffer);
-		printf("%d\n", BUFF_SIZE);
 		buffer[ret] = '\0';
-		if (!(validate(buffer, tetri))) //arr pointer
-		{
+		if (!(validate(buffer, tetri, count))) //arr pointer
 			return (0);
-			//ft_putstrcolor("Invalid!\n", "red");
-		}
-		//else
-			//ft_putstrcolor("Valid!\n", "green");
 		ret = read(fd, &buffer, BUFF_SIZE);
 	}
 	return(1);
 }
-
-
-/*void add_to_arr(char *buf, int count)
-{
-
-
-	get_shape(buf);
-	encode(buf);
-}
-*/
