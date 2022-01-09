@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/09 16:02:04 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/09 16:15:55 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	get_shape(char *buf, t_tetri *tetri, int *count)
 		}
 		j++;
 	}
+	tetri[*count].right += -tetri[*count].left;
 }
 
 void encode(char *buf, t_tetri *tetri, int *index)
