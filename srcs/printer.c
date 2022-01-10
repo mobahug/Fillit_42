@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 22:43:04 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 23:36:45 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,59 @@ void print_tetri(t_tetri *tetri, int index)
 {
 	uint64_t flag = 1;
 	int i;
+	int j;
 
 	i = 0;
 	flag  <<= 15;
-	while (i < 64)
+	while (i < 4)
 	{
-		if (i % 16 == 15)
-			flag <<= 31;
-		if (flag & tetri[index].code)
-			printf("1 ");
-		else
-			printf("0 ");
-		flag >>= 1;
-		if (i % 16 == 15)
-			printf("\n");
+		j = 0;
+		while(j < 16)
+		{
+			if (flag & tetri[index].code)
+				printf("1 ");
+			else
+				printf("0 ");
+			if (j < 15)
+				flag >>= 1;
+			j++;
+		}
+		printf("\n");
+		flag <<= 31;
 		i++;
-		
 	}
 }
+void add_to_board(t_tetri *tetri, int index, int size, char *board)
+{
+	uint64_t flag = 1;
+	int i;
+	int j;
+	int count;
 
+	count = tetri[index].pos;
+	i = 0;
+	flag  <<= 15;
+	while (i < 4)
+	{
+		j = 0;
+		while(j < 16)
+		{
+			if (j % 16 < size)
+			{
+				if (flag & tetri[index].code)
+					board[count] = tetri[index].letter;
+				count++;
+			}
+			if (j < 15)
+				flag >>= 1;
+			j++;
+		}
+		printf("\n");
+		flag <<= 31;
+		i++;
+	}
+}
+/*
 void add_to_board(t_tetri *tetri, int index, int size, char *board)
 {
 	uint64_t flag = 1;
@@ -60,7 +94,7 @@ void add_to_board(t_tetri *tetri, int index, int size, char *board)
 		i++;
 	}
 }
-
+*/
 void print_board(t_tetri *tetri, int size, int count)
 {
 	char	*board;
