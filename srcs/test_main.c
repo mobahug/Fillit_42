@@ -116,7 +116,7 @@ int main()
 	print_map(map);
 	printf("\n");
 	
-	/*
+	
 	*(uint64_t *)(map) ^= (tetri << 6);
 
 	printf("1 means overlap, 0 mean free\n");
@@ -127,7 +127,7 @@ int main()
 		printf("0\n");
 		*(uint64_t *)(map + 4) ^= (tetri2 << 1 );
 	}
-*/
+
 
 	//*(map + 1) = test;
 	//printf("\n");

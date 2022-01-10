@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:26:11 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 10:26:00 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 11:05:52 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int place_on_map(t_tetri *tetri, int *size, int index, uint16_t *map, int *count
 			if (!(*(uint64_t *)(map + y) & tetri[index].code >> x)) //is possible to add
 			{
 				*(uint64_t *)(map + y) ^= (tetri[index].code >> x); //add piece to map
-				tetri[index].pos = x + y;                           //save position
+				tetri[index].pos = x + (y * *size);                           //save position
 				if (place_on_map(tetri, size, index + 1, map, count)) //recurse
 					return (1);
 				*(uint64_t *)(map + y) ^= (tetri[index].code >> x); //delete current tetri (if recurse fail)

@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 10:11:20 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 10:47:25 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,19 @@ void	get_shape(char *buf, t_tetri *tetri, int *count)
 		{
 			if ((j - i) % 5 == 0)
 			{
-				//ft_strcat(temp->rule, "d");
+				//"d"
 				tetri[*count].height += 1;
 			}
 				
 			else if ((j - i) % 5 == 1)
 			{
-				//ft_strcat(temp->rule, "r");
+				// "r"
 				if (++x > tetri[*count].width)
 					(tetri[*count].width)++;
 			}
 			else if ((j - i) % 5 == 3)
 			{
-				//ft_strcat(temp->rule, "2");
+				//"2"
 				tetri[*count].height += 1;
 				x -= 2;
 				if (x < tetri[*count].left)
@@ -108,7 +108,7 @@ void	get_shape(char *buf, t_tetri *tetri, int *count)
 			}
 			else if ((j - i) % 5 == 4)
 			{
-				//ft_strcat(temp->rule, "1");
+				//"1"
 				tetri[*count].height += 1;
 				if (--x < tetri[*count].left)
 					tetri[*count].left = x;
