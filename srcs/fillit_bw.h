@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/10 21:17:02 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:06:41 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int		place_on_map(t_tetri *tetri, int size, int index, uint16_t *map, int count)
 char *new_board(int size);
 void add_to_board(t_tetri *tetri, int index, int size, char *board);
 void print_board(t_tetri *tetri, int size, int count);
+void print_tetri(t_tetri *tetri, int index);
 
 #endif

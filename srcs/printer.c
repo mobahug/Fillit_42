@@ -6,11 +6,35 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 21:24:08 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:43:04 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
+#include <stdio.h>
+
+void print_tetri(t_tetri *tetri, int index)
+{
+	uint64_t flag = 1;
+	int i;
+
+	i = 0;
+	flag  <<= 15;
+	while (i < 64)
+	{
+		if (i % 16 == 15)
+			flag <<= 31;
+		if (flag & tetri[index].code)
+			printf("1 ");
+		else
+			printf("0 ");
+		flag >>= 1;
+		if (i % 16 == 15)
+			printf("\n");
+		i++;
+		
+	}
+}
 
 void add_to_board(t_tetri *tetri, int index, int size, char *board)
 {
@@ -29,6 +53,7 @@ void add_to_board(t_tetri *tetri, int index, int size, char *board)
 		{
 			if (flag & tetri[index].code)
 				board[count] = tetri[index].letter;
+			printf("count: %d\n", count);
 			count++;
 		}
 		flag >>= 1;

@@ -6,12 +6,36 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/10 21:27:31 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:11:02 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 #include <stdio.h>
+
+static void print_map(uint16_t map[16])
+{
+	int i = 0;
+	int j = 0;
+	uint16_t flag = 32768;
+
+	while (i < 16)
+	{
+		j = 0;
+		while (j < 16)
+		{
+			if (map[i] & flag)
+				printf("1 ");
+			else
+				printf("0 ");
+			flag >>= 1;
+			j++;
+		}
+		flag = 32768;
+		printf("\n");
+		i++;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -38,7 +62,13 @@ int	main(int argc, char **argv)
 		ft_putstrcolor("error!\n", "red");
 		return (0);
 	}
+
+	print_tetri(tetri, 0);
+
+	printf("\n");
 	size = solve(tetri, count, map);
+	print_map(map);
+	printf("\n");
 	print_board(tetri, size, count);
 	close(fd);
 	return (0);
@@ -52,28 +82,6 @@ int	main(int argc, char **argv)
 		printf("\n");
 	}
 	*/
-/*
-static void print_map(uint16_t map[16])
-{
-	int i = 0;
-	int j = 0;
-	uint16_t flag = 32768;
 
-	while (i < 16)
-	{
-		j = 0;
-		while (j < 16)
-		{
-			if (map[i] & flag)
-				printf("1 ");
-			else
-				printf("0 ");
-			flag >>= 1;
-			j++;
-		}
-		flag = 32768;
-		printf("\n");
-		i++;
-	}
-}
-*/
+
+
