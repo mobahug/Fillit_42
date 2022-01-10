@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/09 20:50:11 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 13:42:50 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	
-	solve(tetri, &count, map);
+	solve(tetri, count, map);
 	print_map(map);
 	//print(tetri[]);
 	close(fd);

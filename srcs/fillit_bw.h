@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/10 10:11:01 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 13:43:27 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void encode(char *buf, t_tetri *tetri, int *index);
 void	get_shape(char *buf, t_tetri *tetri, int *count);
 void shift_shape(char *buf, char *shifted, t_tetri *tetri, int *count);
 
-void	solve(t_tetri *tetri, int *count, uint16_t *map);
-int		get_size(int *count);
-int		place_on_map(t_tetri *tetri, int *size, int index, uint16_t *map, int *count);
+void	solve(t_tetri *tetri, int count, uint16_t *map);
+int		get_size(int count);
+int		place_on_map(t_tetri *tetri, int size, int index, uint16_t *map, int count);
 
 
 #endif
