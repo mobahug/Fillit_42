@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit_bw.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/10 13:43:27 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:31:58 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_tetri
 {
 	uint64_t		code;
 	int				pos;
+	char			letter;
 	int				left;
 	int				width;
 	int				height;

@@ -3,16 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/10 13:42:50 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:36:13 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 #include <stdio.h>
+/*
+static void print_tetri(uint64_t code)
+{
+	int i;
 
+	uint64_t flag = 1;
+
+
+	i = 0;
+
+	flag <<= 15;
+
+	while (i < 64)
+	{
+
+		if (code & flag)
+			printf("1 ");
+		else
+			printf("0 ");
+
+
+		flag >>= 1;
+		if (i % 16 == 15)
+		{
+			flag <<= 31;
+			printf("\n");
+		}
+
+		i++;
+	}
+}
+//
 static void print_map(uint16_t map[16])
 {
 	int i = 0;
@@ -37,7 +68,7 @@ static void print_map(uint16_t map[16])
 	}
 	//printf("\n");
 }
-
+*/
 int	main(int argc, char **argv)
 {
 	int			fd;
@@ -62,10 +93,11 @@ int	main(int argc, char **argv)
 		ft_putstrcolor("error!\n", "red");
 		return (0);
 	}
-	
+
 	solve(tetri, count, map);
-	print_map(map);
-	//print(tetri[]);
+	//print_map(map);
+	printf("\n\n");
+	//print_tetri(tetri[0].code);
 	close(fd);
 	return (0);
 }

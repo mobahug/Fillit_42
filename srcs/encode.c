@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   encode.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 10:47:25 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:35:12 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void add_tetri(t_tetri *tetri, char *buf, int *count)
 	tetri[*count].left = 0;
 	tetri[*count].width = 0;
 	tetri[*count].height = 0;
+	tetri[*count].letter = 'A' + (char)*count;
+	printf("tetri letter: %c\n", tetri[*count].letter);
 	get_shape(buf, tetri, count);
 	shift_shape(buf, shifted, tetri, count);
 	encode(shifted, tetri, count);
@@ -32,7 +34,7 @@ void shift_shape(char *buf, char *shifted, t_tetri *tetri, int *count)
 {
 	int i;
 	int j;
-	
+
 	//printf("left: %d\n", tetri[*count].left);
 	//printf("right: %d\n", tetri[*count].right);
 	//printf("height: %d\n", tetri[*count].height);
@@ -68,7 +70,7 @@ void shift_shape(char *buf, char *shifted, t_tetri *tetri, int *count)
 		printf("%c", shifted[i++]);
 	printf("\n");
 	*/
-	
+
 }
 
 void	get_shape(char *buf, t_tetri *tetri, int *count)
@@ -91,7 +93,7 @@ void	get_shape(char *buf, t_tetri *tetri, int *count)
 				//"d"
 				tetri[*count].height += 1;
 			}
-				
+
 			else if ((j - i) % 5 == 1)
 			{
 				// "r"
@@ -123,7 +125,7 @@ void	get_shape(char *buf, t_tetri *tetri, int *count)
 void encode(char *buf, t_tetri *tetri, int *index)
 {
 	uint64_t code = 0;
-	
+
 	int i;
 	int count;
 	uint64_t pow = 1;
