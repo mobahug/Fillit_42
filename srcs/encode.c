@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   encode.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 16:35:12 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:32:23 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void add_tetri(t_tetri *tetri, char *buf, int *count)
 	tetri[*count].width = 0;
 	tetri[*count].height = 0;
 	tetri[*count].letter = 'A' + (char)*count;
-	printf("tetri letter: %c\n", tetri[*count].letter);
 	get_shape(buf, tetri, count);
 	shift_shape(buf, shifted, tetri, count);
 	encode(shifted, tetri, count);

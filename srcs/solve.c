@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:26:11 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 13:43:50 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:31:59 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 
-void	solve(t_tetri *tetri, int count, uint16_t *map)
+int	solve(t_tetri *tetri, int count, uint16_t *map)
 {
 	int	size;
 	//printf("total count:\t%d\n", *count);
@@ -26,6 +26,7 @@ void	solve(t_tetri *tetri, int count, uint16_t *map)
 		ft_bzero(map, sizeof(uint16_t) * 16);
 		size++;
 	}
+	return (size);
 }
 
 int	get_size(int count)

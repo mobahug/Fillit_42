@@ -3,47 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/10 16:36:13 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/10 21:27:31 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 #include <stdio.h>
-/*
-static void print_tetri(uint64_t code)
+
+int	main(int argc, char **argv)
 {
-	int i;
+	int			fd;
+	int			count;
+	int			size;
+	t_tetri		tetri[26];
+	uint16_t	map[16];
 
-	uint64_t flag = 1;
-
-
-	i = 0;
-
-	flag <<= 15;
-
-	while (i < 64)
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
 	{
-
-		if (code & flag)
-			printf("1 ");
-		else
-			printf("0 ");
-
-
-		flag >>= 1;
-		if (i % 16 == 15)
-		{
-			flag <<= 31;
-			printf("\n");
-		}
-
-		i++;
+		ft_putstrcolor("error!\n", "red");
+		return (0);
 	}
+	if (argc != 2)
+	{
+		ft_putstrcolor("usage: ./fillit file.fillit\n", "red");
+		return (0);
+	}
+	count = 0;
+	if (!reader(fd, tetri, &count))
+	{
+		ft_putstrcolor("error!\n", "red");
+		return (0);
+	}
+	size = solve(tetri, count, map);
+	print_board(tetri, size, count);
+	close(fd);
+	return (0);
 }
-//
+
+/*
+	int i = 0;
+	while (i < 4)
+	{
+		print_tetri(tetri[i++].code);
+		printf("\n");
+	}
+	*/
+/*
 static void print_map(uint16_t map[16])
 {
 	int i = 0;
@@ -66,39 +75,5 @@ static void print_map(uint16_t map[16])
 		printf("\n");
 		i++;
 	}
-	//printf("\n");
 }
 */
-int	main(int argc, char **argv)
-{
-	int			fd;
-	int			count;
-	t_tetri		tetri[26];
-	uint16_t	map[16];
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (1);
-	if (argc != 2) //add usage
-	{
-		if (argc != 2)
-		{
-			ft_putstrcolor("usage: ./fillit file.fillit\n", "red");
-			exit(EXIT_FAILURE);
-		}
-	}
-	count = 0;
-	if (!reader(fd, tetri, &count))
-	{
-		ft_putstrcolor("error!\n", "red");
-		return (0);
-	}
-
-	solve(tetri, count, map);
-	//print_map(map);
-	printf("\n\n");
-	//print_tetri(tetri[0].code);
-	close(fd);
-	return (0);
-}
-
