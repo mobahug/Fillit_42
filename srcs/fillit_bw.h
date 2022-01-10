@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/09 15:48:06 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 10:11:01 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 typedef struct s_tetri
 {
 	uint64_t		code;
-	int				count;
+	int				pos;
 	int				left;
-	int				right;
+	int				width;
 	int				height;
 }				t_tetri;
 

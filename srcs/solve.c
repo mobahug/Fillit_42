@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:26:11 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/09 16:02:22 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/10 10:26:00 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,16 @@
 void	solve(t_tetri *tetri, int *count, uint16_t *map)
 {
 	int	size;
-	printf(" total count:\t%d\n", *count);
-	
+	//printf("total count:\t%d\n", *count);
+
 	size = get_size(count);
-	//size = 4;
 	ft_bzero(map, sizeof(uint16_t) * 16);
-	//place_on_map(tetri, &size, 0, map, count);
-	
+
 	while (!place_on_map(tetri, &size, 0, map, count))
 	{
 		ft_bzero(map, sizeof(uint16_t) * 16);
 		size++;
 	}
-	printf("size:\t%d\n", size);
-	
-	
 }
 
 int	get_size(int *count)
@@ -55,11 +50,12 @@ int place_on_map(t_tetri *tetri, int *size, int index, uint16_t *map, int *count
 	while (tetri[index].height + y < *size)
 	{
 		x = 0;
-		while (tetri[index].right + x < *size)
+		while (tetri[index].width + x < *size)
 		{
 			if (!(*(uint64_t *)(map + y) & tetri[index].code >> x)) //is possible to add
 			{
 				*(uint64_t *)(map + y) ^= (tetri[index].code >> x); //add piece to map
+				tetri[index].pos = x + y;                           //save position
 				if (place_on_map(tetri, size, index + 1, map, count)) //recurse
 					return (1);
 				*(uint64_t *)(map + y) ^= (tetri[index].code >> x); //delete current tetri (if recurse fail)

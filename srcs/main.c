@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/09 14:35:36 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/09 20:50:11 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void print_map(uint16_t map[16])
 		printf("\n");
 		i++;
 	}
-	printf("\n");
+	//printf("\n");
 }
 
 int	main(int argc, char **argv)

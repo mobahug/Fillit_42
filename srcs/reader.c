@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/09 14:52:28 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:10:54 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ int	validate(char *str, t_tetri *tetri, int *count)
 	}
 	if (total_connections < 6 && hash_counter != 4)
 	{
-		ft_putstrcolor("shape_wrong\n", "red");
+		//ft_putstrcolor("shape_wrong\n", "red");
 			return (0);
 	}
 	else
 	{
-		ft_putstrcolor("shape_right\n", "green");
+		//ft_putstrcolor("shape_right\n", "green");
 		if (*count > 25)
 			return (0);
 		add_tetri(tetri, str, count);
