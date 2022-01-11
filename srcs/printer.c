@@ -6,40 +6,13 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/11 10:38:15 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:59:20 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 #include <stdio.h>
-/*
-void print_tetri(t_tetri *tetri, int index)
-{
-	uint64_t flag = 1;
-	int i;
-	int j;
 
-	i = 0;
-	flag  <<= 15;
-	while (i < 4)
-	{
-		j = 0;
-		while(j < 16)
-		{
-			if (flag & tetri[index].code)
-				printf("1 ");
-			else
-				printf("0 ");
-			if (j < 15)
-				flag >>= 1;
-			j++;
-		}
-		printf("\n");
-		flag <<= 31;
-		i++;
-	}
-}
-*/
 void add_to_board(t_tetri *tetri, int index, int size, char *board)
 {
 	uint64_t flag = 1;
@@ -105,3 +78,32 @@ char *new_board(int size)
 	board[i] = '\0';
 	return (board);
 }
+
+/*
+void print_tetri(t_tetri *tetri, int index)
+{
+	uint64_t flag = 1;
+	int i;
+	int j;
+
+	i = 0;
+	flag  <<= 15;
+	while (i < 4)
+	{
+		j = 0;
+		while(j < 16)
+		{
+			if (flag & tetri[index].code)
+				printf("1 ");
+			else
+				printf("0 ");
+			if (j < 15)
+				flag >>= 1;
+			j++;
+		}
+		printf("\n");
+		flag <<= 31;
+		i++;
+	}
+}
+*/
