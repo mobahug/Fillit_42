@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/11 12:04:06 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/11 11:14:35 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	validate(char *str, t_tetri *tetri, int *count)
 		//ft_putstrcolor("shape_right\n", "green");
 		if (*count > 25)
 			return (0);
-		add_tetri(tetri, str, *count);
+		add_tetri(tetri, str, count);
 		(*count)++;
 	}
 	return (1);
