@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/11 10:05:39 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:21:07 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	print_map(uint16_t map[16])
 			j++;
 		}
 		flag = 32768;
-		ft_putchar("\n");
+		ft_putchar('\n');
 		i++;
 	}
 }
@@ -65,10 +65,10 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	print_tetri(tetri, 0);
-	printf("\n");
+	ft_putchar('\n');
 	size = solve(tetri, count, map);
 	print_map(map);
-	printf("\n");
+	ft_putchar('\n');
 	print_board(tetri, size, count);
 	close(fd);
 	return (0);

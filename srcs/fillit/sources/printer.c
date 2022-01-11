@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/11 10:06:38 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:21:26 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_tetri(t_tetri *tetri, int index)
 			ft_putstrcolor("0 ", "green");
 		flag >>= 1;
 		if (i % 16 == 15)
-			ft_putchar("\n");
+			ft_putchar('\n');
 		i++;
 	}
 }

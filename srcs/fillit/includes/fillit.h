@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/11 09:35:10 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:21:52 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <unistd.h>
 # include "libft.h"
 # include <stdint.h>
-
-# include <stdio.h>
 
 # define BUFF_SIZE 21
 
