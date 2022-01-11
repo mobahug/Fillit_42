@@ -6,13 +6,13 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/10 23:36:45 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:38:15 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 #include <stdio.h>
-
+/*
 void print_tetri(t_tetri *tetri, int index)
 {
 	uint64_t flag = 1;
@@ -39,6 +39,7 @@ void print_tetri(t_tetri *tetri, int index)
 		i++;
 	}
 }
+*/
 void add_to_board(t_tetri *tetri, int index, int size, char *board)
 {
 	uint64_t flag = 1;
@@ -64,37 +65,11 @@ void add_to_board(t_tetri *tetri, int index, int size, char *board)
 				flag >>= 1;
 			j++;
 		}
-		printf("\n");
 		flag <<= 31;
 		i++;
 	}
 }
-/*
-void add_to_board(t_tetri *tetri, int index, int size, char *board)
-{
-	uint64_t flag = 1;
-	int i;
-	int count;
 
-	count = tetri[index].pos;
-	i = 0;
-	flag  <<= 15;
-	while (i < 64)
-	{
-		if (i % 16 == 15)
-			flag <<= 32;
-		if (i % 16 < size)
-		{
-			if (flag & tetri[index].code)
-				board[count] = tetri[index].letter;
-			printf("count: %d\n", count);
-			count++;
-		}
-		flag >>= 1;
-		i++;
-	}
-}
-*/
 void print_board(t_tetri *tetri, int size, int count)
 {
 	char	*board;

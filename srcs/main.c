@@ -6,13 +6,45 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/10 22:11:02 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:39:44 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
-#include <stdio.h>
+//#include <stdio.h>
 
+int	main(int argc, char **argv)
+{
+	int			fd;
+	int			count;
+	int			size;
+	t_tetri		tetri[26];
+	uint16_t	map[16];
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstrcolor("error\n", "red");
+		return (0);
+	}
+	if (argc != 2)
+	{
+		ft_putstrcolor("usage: ./fillit file.fillit\n", "red");
+		return (0);
+	}
+	count = 0;
+	if (!reader(fd, tetri, &count))
+	{
+		ft_putstrcolor("error\n", "red");
+		return (0);
+	}
+	size = solve(tetri, count, map);
+	print_board(tetri, size, count);
+	close(fd);
+	return (0);
+}
+
+/*
 static void print_map(uint16_t map[16])
 {
 	int i = 0;
@@ -36,43 +68,7 @@ static void print_map(uint16_t map[16])
 		i++;
 	}
 }
-
-int	main(int argc, char **argv)
-{
-	int			fd;
-	int			count;
-	int			size;
-	t_tetri		tetri[26];
-	uint16_t	map[16];
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstrcolor("error!\n", "red");
-		return (0);
-	}
-	if (argc != 2)
-	{
-		ft_putstrcolor("usage: ./fillit file.fillit\n", "red");
-		return (0);
-	}
-	count = 0;
-	if (!reader(fd, tetri, &count))
-	{
-		ft_putstrcolor("error!\n", "red");
-		return (0);
-	}
-
-	print_tetri(tetri, 0);
-
-	printf("\n");
-	size = solve(tetri, count, map);
-	print_map(map);
-	printf("\n");
-	print_board(tetri, size, count);
-	close(fd);
-	return (0);
-}
+*/
 
 /*
 	int i = 0;
