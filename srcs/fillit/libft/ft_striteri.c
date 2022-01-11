@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 07:20:59 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/11/24 15:06:11 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/09 09:30:21 by ghorvath          #+#    #+#             */
+/*   Updated: 2022/01/11 09:50:42 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdel(t_list **alst, void	(*del)(void*, size_t))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	t_list	*temp;
-	t_list	*list;
+	unsigned int	i;
 
-	list = *alst;
-	while (list != NULL)
+	if (s != 0)
 	{
-		temp = list->next;
-		del(list->content, list->content_size);
-		free(list);
-		list = temp;
+		i = 0;
+		while (s[i] != '\0')
+		{
+			(*f)(i, &s[i]);
+			i++;
+		}
 	}
-	*alst = NULL;
 }

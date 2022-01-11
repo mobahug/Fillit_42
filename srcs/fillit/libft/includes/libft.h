@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/07 13:24:21 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/11 09:51:31 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-//# define BUFF_SIZE 21
-# define FD_SIZE 4096
 
 /*
 **DEFINE_COLORS
@@ -62,9 +59,9 @@ char	*ft_itoa(int n);
 */
 
 void	ft_lstadd(t_list **alst, t_list *new);
-void	ft_lstdel(t_list **alst, void	(*del) (void*, size_t));
-void	ft_lstdelone(t_list **alst, void	(*del) (void*, size_t));
-void	ft_lstiter(t_list *lst, void	(*f)(t_list *elem));
+void	ft_lstdel(t_list **alst, void (*del) (void*, size_t));
+void	ft_lstdelone(t_list **alst, void (*del) (void*, size_t));
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void	*ft_memalloc(size_t size);
 
 /*
@@ -104,13 +101,13 @@ char	*ft_strcpy(char *dst, const char *src);
 void	ft_strdel(char **as);
 char	*ft_strdup(const char *s1);
 int		ft_strequ(char const *s1, char const *s2);
-void	ft_striter(char *s, void	(*f)(char *));
-void	ft_striteri(char *s, void	(*f)(unsigned int, char *));
+void	ft_striter(char *s, void (*f)(char *));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
-char	*ft_strmap(char const *s, char	(*f)(char));
-char	*ft_strmapi(char const *s, char	(*f)(unsigned int, char));
+char	*ft_strmap(char const *s, char (*f)(char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strncat(char *s1, const char *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
@@ -139,8 +136,5 @@ int		ft_number_lenght(long nb);
 /*
 **GET_NEXT_LINE
 */
-
-//int		get_next_line(const int fd, char **line);
-
 
 #endif

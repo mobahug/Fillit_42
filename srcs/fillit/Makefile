@@ -6,40 +6,43 @@
 #    By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 12:35:34 by ghorvath          #+#    #+#              #
-#    Updated: 2022/01/07 13:45:03 by ghorvath         ###   ########.fr        #
+#    Updated: 2022/01/11 09:47:39 by ghorvath         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = tester
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
-MORE_FLAGS = -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
-SRCS = main.c reader.c
-OBJS = main.o reader.o
-HDRS = fillit_bw.h
-LIB = libft/
+NAME		=	fillit
+CC			=	clang
+CFLAGS		=	-Wall	-Wextra	-Werror	-I	includes	-I	libft/includes
+SRCS		=	encode.c	main.c	printer.c	reader.c	solve.c
+SRCS_DIR	=	./sources/
+OBJS_DIR	=	./objects/
+OBJS		=	$(addprefix	$(OBJS_DIR), $(SRCS:.c=.o))
+LIBFLAGS	=	-Llibft
+LIB			=	-lft
 
-all:
-	$(MAKE) -C $(LIB)
-	$(MAKE) $(NAME)
+all:	$(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(OBJS) -L ./libft -lft -o $(NAME)
+$(NAME):	$(OBJS)
 
-$(OBJS) : $(SRCS)
-	$(CC) $(FLAGS) $(MORE_FLAGS) -c $(SRCS) -I $(HDRS)
-#	$(CC) $(FLAGS) -c $(SRCS) -I $(HDRS)
+	$(CC)	$(CFLAGS)	$(OBJS)	-o	$(NAME)	$(LIBFLAGS)	$(LIB)
 
+
+$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
+
+	make	-sC	libft
+	mkdir	-p	$(OBJS_DIR)
+	$(CC)	$(CFLAGS)	-c	$<	-o	$@
 
 
 clean:
-	rm -f $(OBJS)
-	$(MAKE) -C $(LIB) clean
+	rm	-rf	$(OBJS_DIR)
+	rm	-f	libft/*.o
 
-fclean: clean
-	rm -f $(NAME)
-	$(MAKE) -C $(LIB) fclean
 
-re: fclean all
+fclean:	clean
+	rm	-f	$(NAME)
+	rm	-f	libft/libft.a
 
-.PHONY: all clean fclean re
+re:	fclean all
+
+.PHONY:	all	clean	fclean	re
