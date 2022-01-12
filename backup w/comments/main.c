@@ -6,20 +6,20 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/11 23:20:33 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 11:12:48 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
-#include<stdio.h>
+
 int	main(int argc, char **argv)
 {
 	int			fd;
 	int			count;
 	int			size;
-	t_tetri		tetri[27];
+	t_tetri		tetri[26];
 	uint16_t	map[16];
-	printf("HERE\n");
+
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
@@ -32,15 +32,13 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	count = 0;
-	printf("count %d\n", count);
 	if (!reader(fd, tetri, &count))
 	{
 		ft_putstrcolor("error\n", "red");
 		return (0);
 	}
-	printf("count %d\n", count);
 	tetri[count].code = 0;
-	size = solve(&tetri[0], count, map);
+	size = solve(tetri, count, map);
 	print_board(tetri, size, count);
 	close(fd);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:26:11 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/11 23:24:48 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 11:45:23 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	get_size(int count)
 		size++;
 	return (size);
 }
+
 int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
 {
 	int	x;
@@ -62,32 +63,3 @@ int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
 	}
 	return (0);
 }
-/*
-int	place_on_map(t_tetri *tetri, int size, int index, uint16_t *map, int count)
-{
-	int	x;
-	int	y;
-
-	if (index == count)
-		return (1);
-	y = 0;
-	while (tetri[index].height + y < size)
-	{
-		x = 0;
-		while (tetri[index].width + x < size)
-		{
-			if (!(*(uint64_t *)(map + y) & tetri[index].code >> x))
-			{
-				*(uint64_t *)(map + y) ^= (tetri[index].code >> x);
-				tetri[index].pos = x + (y * size);
-				if (place_on_map(tetri, size, index + 1, map, count))
-					return (1);
-				*(uint64_t *)(map + y) ^= (tetri[index].code >> x);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
-*/
