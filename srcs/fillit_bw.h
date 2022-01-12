@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/11 23:23:34 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:56:39 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,19 @@ int	check_connection(char *str, int i);
 int	validate(char *str, t_tetri *tetri, int *count);
 int	reader(int fd, t_tetri *tetri, int *count);
 
-void add_tetri(t_tetri *tetri, char *buf, int count);
-void encode(char *buf, t_tetri *tetri, int index);
-void	get_shape(char *buf, t_tetri *tetri, int count);
-void shift_shape(char *buf, char *shifted, t_tetri *tetri, int count);
+void	add_tetri(t_tetri *tetri, char *buf, int *count);
+void	encode(char *buf, t_tetri *tetri);
+void	get_shape(char *buf, t_tetri *tetri);
+void	shift_shape(char *buf, char *shifted, t_tetri *tetri);
+void sum_lwh(t_tetri *tetri, int j, int *i, int *x);
 
 int		solve(t_tetri *tetri, int count, uint16_t *map);
 int		get_size(int count);
-//int		place_on_map(t_tetri *tetri, int size, int index, uint16_t *map, int count);
+
 int	place_on_map(t_tetri *tetri, int size, uint16_t *map);
 char *new_board(int size);
-void add_to_board(t_tetri *tetri, int index, int size, char *board);
-void print_board(t_tetri *tetri, int size, int count);
+void add_to_board(t_tetri *tetri, int size, char *board);
+void print_board(t_tetri *tetri, int size);
 void print_tetri(t_tetri *tetri, int index);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/11 23:26:19 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:57:09 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	}
 	tetri[count].code = 0;
 	size = solve(tetri, count, map);
-	print_board(tetri, size, count);
+	print_board(tetri, size);
 	close(fd);
 	return (0);
 }
