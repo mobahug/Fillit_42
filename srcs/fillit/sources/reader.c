@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/11 10:07:56 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/12 12:57:20 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,21 @@ int	check_connection(char *str, int i)
 	int	connections;
 
 	connections = 0;
-	while (i < 19)
+	if (i >= 1 && str[i - 1] == '#')
 	{
-		if (i >= 1 && str[i - 1] == '#')
-		{
-			connections++;
-		}
-		if (i < 19 && str[i + 1] == '#')
-		{
-			connections++;
-		}
-		if (i >= 5 && str[i - 5] == '#')
-		{
-			connections++;
-		}
-		if (i < 15 && str[i + 5] == '#')
-		{
-			connections++;
-		}
-		i++;
+		connections++;
+	}
+	if (i < 19 && str[i + 1] == '#')
+	{
+		connections++;
+	}
+	if (i >= 5 && str[i - 5] == '#')
+	{
+		connections++;
+	}
+	if (i < 15 && str[i + 5] == '#')
+	{
+		connections++;
 	}
 	return (connections);
 }
@@ -59,12 +55,10 @@ int	validate(char *str, t_tetri *tetri, int *count)
 			total_connections += check_connection(str, i);
 		i++;
 	}
-	if (total_connections < 6 && hash_counter != 4)
+	if (total_connections < 6 || hash_counter != 4 || *count > 26)
 		return (0);
 	else
 	{
-		if (*count > 25)
-			return (0);
 		add_tetri(tetri, str, count);
 		(*count)++;
 	}
@@ -75,16 +69,22 @@ int	reader(int fd, t_tetri *tetri, int *count)
 {
 	char		buffer[BUFF_SIZE + 1];
 	ssize_t		ret;
+	ssize_t		ret_copy;
 
 	ret = read(fd, &buffer, BUFF_SIZE);
+	if (ret == -1 || ret == 0 || fd == -1)
+		return (0);
 	while (ret)
 	{
-		if (ret == 21 && buffer[20] != '\n')
+		ret_copy = ret;
+		if ((ret == 21 && buffer[20] != '\n') || ret == -1)
 			return (0);
 		buffer[ret] = '\0';
 		if (!(validate(buffer, tetri, count)))
 			return (0);
 		ret = read(fd, &buffer, BUFF_SIZE);
+		if (ret_copy == 21 && ret == 0)
+			return (0);
 	}
 	return (1);
 }

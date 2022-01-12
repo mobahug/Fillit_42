@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 14:28:21 by willdonnell       #+#    #+#             */
-/*   Updated: 2022/01/11 10:21:52 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/12 12:46:53 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ void	add_tetri(t_tetri *tetri, char *buf, int *count);
 void	shift_shape(char *buf, char *shifted, t_tetri *tetri, int *count);
 void	get_shape(char *buf, t_tetri *tetri, int *count);
 void	encode(char *buf, t_tetri *tetri, int *index);
-
-/*
-**MAIN.C
-*/
 
 /*
 **PRINTER.C
