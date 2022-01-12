@@ -6,13 +6,13 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/12 12:57:20 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:43:23 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	check_connection(char *str, int i)
+static int	check_connection(char *str, int i)
 {
 	int	connections;
 
@@ -36,7 +36,7 @@ int	check_connection(char *str, int i)
 	return (connections);
 }
 
-int	validate(char *str, t_tetri *tetri, int *count)
+static int	validate(char *str, t_tetri *tetri, int *count)
 {
 	int	i;
 	int	hash_counter;
@@ -59,7 +59,7 @@ int	validate(char *str, t_tetri *tetri, int *count)
 		return (0);
 	else
 	{
-		add_tetri(tetri, str, count);
+		add_tetri(tetri + *count, str, count);
 		(*count)++;
 	}
 	return (1);

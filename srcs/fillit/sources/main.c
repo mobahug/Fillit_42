@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 12:43:01 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/12 12:45:34 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:44:20 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		error("error!");
 	tetri[count].code = 0;
 	size = solve(tetri, count, map);
-	print_board(tetri, size, count);
+	print_board(tetri, size);
 	close(fd);
 	return (0);
 }
