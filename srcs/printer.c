@@ -6,13 +6,13 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/12 15:18:08 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:26:15 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 
-void	add_to_board(t_tetri *tetri, int size, char *board)
+static void	add_to_board(t_tetri *tetri, int size, char *board)
 {
 	uint64_t	flag;
 	int			i;
@@ -38,6 +38,19 @@ void	add_to_board(t_tetri *tetri, int size, char *board)
 	}
 }
 
+static char	*new_board(int size)
+{
+	char	*board;
+	int		i;
+
+	i = 0;
+	board = ft_strnew((size_t)(size * size));
+	while (i < (size * size))
+		board[i++] = '.';
+	board[i] = '\0';
+	return (board);
+}
+
 void	print_board(t_tetri *tetri, int size)
 {
 	char	*board;
@@ -59,17 +72,4 @@ void	print_board(t_tetri *tetri, int size)
 		i++;
 	}
 	free (board);
-}
-
-char	*new_board(int size)
-{
-	char	*board;
-	int		i;
-
-	i = 0;
-	board = ft_strnew((size_t)(size * size));
-	while (i < (size * size))
-		board[i++] = '.';
-	board[i] = '\0';
-	return (board);
 }

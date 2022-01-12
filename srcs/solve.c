@@ -6,27 +6,13 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:26:11 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/12 15:18:12 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:27:43 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 
-int	solve(t_tetri *tetri, int count, uint16_t *map)
-{
-	int	size;
-
-	size = get_size(count);
-	ft_bzero(map, sizeof(uint16_t) * 16);
-	while (!place_on_map(&tetri[0], size, map))
-	{
-		ft_bzero(map, sizeof(uint16_t) * 16);
-		size++;
-	}
-	return (size);
-}
-
-int	get_size(int count)
+static int	get_size(int count)
 {
 	int	size;
 
@@ -36,7 +22,7 @@ int	get_size(int count)
 	return (size);
 }
 
-int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
+static int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
 {
 	int	x;
 	int	y;
@@ -62,4 +48,18 @@ int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
 		y++;
 	}
 	return (0);
+}
+
+int	solve(t_tetri *tetri, int count, uint16_t *map)
+{
+	int	size;
+
+	size = get_size(count);
+	ft_bzero(map, sizeof(uint16_t) * 16);
+	while (!place_on_map(&tetri[0], size, map))
+	{
+		ft_bzero(map, sizeof(uint16_t) * 16);
+		size++;
+	}
+	return (size);
 }

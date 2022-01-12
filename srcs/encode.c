@@ -6,27 +6,13 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/12 15:18:10 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:27:31 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit_bw.h"
 
-void	add_tetri(t_tetri *tetri, char *buf, int *count)
-{
-	char	shifted[21];
-
-	tetri->left = 0;
-	tetri->width = 0;
-	tetri->height = 0;
-	tetri->letter = 'A' + (char)*count;
-	buf[20] = '\0';
-	get_shape(buf, tetri);
-	shift_shape(buf, shifted, tetri);
-	encode(shifted, tetri);
-}
-
-void	shift_shape(char *buf, char *shifted, t_tetri *tetri)
+static void	shift_shape(char *buf, char *shifted, t_tetri *tetri)
 {
 	int	i;
 	int	j;
@@ -55,27 +41,7 @@ void	shift_shape(char *buf, char *shifted, t_tetri *tetri)
 	}
 }
 
-void	get_shape(char *buf, t_tetri *tetri)
-{
-	int	i;
-	int	j;
-	int	x;
-
-	i = 0;
-	while (buf[i] != '#')
-		i++;
-	j = i + 1;
-	x = 0;
-	while (buf[j])
-	{
-		if (buf[j] == '#')
-			sum_lwh(tetri, j, &i, &x);
-		j++;
-	}
-	tetri->width += -tetri->left;
-}
-
-void	sum_lwh(t_tetri *tetri, int j, int *i, int *x)
+static void	sum_lwh(t_tetri *tetri, int j, int *i, int *x)
 {
 	if ((j - *i) % 5 == 0)
 		tetri->height += 1;
@@ -100,7 +66,27 @@ void	sum_lwh(t_tetri *tetri, int j, int *i, int *x)
 	*i = j;
 }
 
-void	encode(char *buf, t_tetri *tetri)
+static void	get_shape(char *buf, t_tetri *tetri)
+{
+	int	i;
+	int	j;
+	int	x;
+
+	i = 0;
+	while (buf[i] != '#')
+		i++;
+	j = i + 1;
+	x = 0;
+	while (buf[j])
+	{
+		if (buf[j] == '#')
+			sum_lwh(tetri, j, &i, &x);
+		j++;
+	}
+	tetri->width += -tetri->left;
+}
+
+static void	encode(char *buf, t_tetri *tetri)
 {
 	uint64_t	code;
 	uint64_t	pow;
@@ -125,4 +111,18 @@ void	encode(char *buf, t_tetri *tetri)
 		i++;
 	}
 	tetri->code = code;
+}
+
+void	add_tetri(t_tetri *tetri, char *buf, int *count)
+{
+	char	shifted[21];
+
+	tetri->left = 0;
+	tetri->width = 0;
+	tetri->height = 0;
+	tetri->letter = 'A' + (char)*count;
+	buf[20] = '\0';
+	get_shape(buf, tetri);
+	shift_shape(buf, shifted, tetri);
+	encode(shifted, tetri);
 }
