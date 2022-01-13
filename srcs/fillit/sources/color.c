@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/13 14:39:47 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/13 15:26:06 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,24 @@ static char	*new_board(int size)
 	return (board);
 }
 
-static void	color(char board)
+static void	color(char c)
 {
-	if ((board - 65) % 7 == 0)
-		ft_putcharcolor(board, "red");
-	else if ((board - 65) % 7 == 1)
-		ft_putcharcolor(board, "green");
-	else if ((board - 65) % 7 == 2)
-		ft_putcharcolor(board, "yellow");
-	else if ((board - 65) % 7 == 3)
-		ft_putcharcolor(board, "blue");
-	else if ((board - 65) % 7 == 4)
-		ft_putcharcolor(board, "magenta");
-	else if ((board - 65) % 7 == 5)
-		ft_putcharcolor(board, "cyan");
-	else if ((board - 65) % 7 == 6)
-		ft_putcharcolor(board, "black");
+	if ((c - 'A') % 7 == 0)
+		ft_putcharcolor(c, "red");
+	else if ((c - 'A') % 7 == 1)
+		ft_putcharcolor(c, "green");
+	else if ((c - 'A') % 7 == 2)
+		ft_putcharcolor(c, "yellow");
+	else if ((c - 'A') % 7 == 3)
+		ft_putcharcolor(c, "blue");
+	else if ((c - 'A') % 7 == 4)
+		ft_putcharcolor(c, "magenta");
+	else if ((c - 'A') % 7 == 5)
+		ft_putcharcolor(c, "cyan");
+	else if ((c - 'A') % 7 == 6)
+		ft_putcharcolor(c, "black");
 	else
-		ft_putcharcolor(board, "white");
+		ft_putcharcolor(c, "white");
 }
 
 void	print_board(t_tetri *tetri, int size)
