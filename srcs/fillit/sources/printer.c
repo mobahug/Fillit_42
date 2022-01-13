@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/12 16:23:24 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/13 10:10:36 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,26 @@ static char	*new_board(int size)
 	return (board);
 }
 
+static void	color(char board)
+{
+	if ((board - 65) % 7 == 0)
+		ft_putcharcolor(board, "red");
+	else if ((board - 65) % 7 == 1)
+		ft_putcharcolor(board, "green");
+	else if ((board - 65) % 7 == 2)
+		ft_putcharcolor(board, "yellow");
+	else if ((board - 65) % 7 == 3)
+		ft_putcharcolor(board, "blue");
+	else if ((board - 65) % 7 == 4)
+		ft_putcharcolor(board, "magenta");
+	else if ((board - 65) % 7 == 5)
+		ft_putcharcolor(board, "cyan");
+	else if ((board - 65) % 7 == 6)
+		ft_putcharcolor(board, "black");
+	else
+		ft_putcharcolor(board, "white");
+}
+
 void	print_board(t_tetri *tetri, int size)
 {
 	char	*board;
@@ -66,24 +86,7 @@ void	print_board(t_tetri *tetri, int size)
 	i = 0;
 	while (i < size * size)
 	{
-		if (board[i] == 'A' || board[i] == 'I' || board[i] == 'Q' || board[i] == 'Y')
-			ft_putcharcolor(board[i], "red");
-		else if (board[i] == 'B' || board[i] == 'J' || board[i] == 'R' || board[i] == 'Z')
-			ft_putcharcolor(board[i], "green");
-		else if (board[i] == 'C' || board[i] == 'K' || board[i] == 'S')
-			ft_putcharcolor(board[i], "magenta");
-		else if (board[i] == 'D' || board[i] == 'L' || board[i] == 'T')
-			ft_putcharcolor(board[i], "yellow");
-		else if (board[i] == 'E' || board[i] == 'M' || board[i] == 'U')
-			ft_putcharcolor(board[i], "blue");
-		else if (board[i] == 'F' || board[i] == 'N' || board[i] == 'V')
-			ft_putcharcolor(board[i], "cyan");
-		else if (board[i] == 'G' || board[i] == 'O' || board[i] == 'W')
-			ft_putcharcolor(board[i], "normal");
-		else if (board[i] == 'H' || board[i] == 'P' || board[i] == 'X')
-			ft_putcharcolor(board[i], "white");
-		else
-			ft_putchar(board[i]);
+		color(board[i]);
 		if (i % size == size - 1)
 			ft_putchar('\n');
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/11 09:51:31 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/13 10:10:16 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@
 */
 
 # define NORMAL		"\x1B[0m"
-# define RED		"\x1B[31m"
-# define GREEN		"\x1B[32m"
-# define YELLOW		"\x1B[33m"
-# define BLUE		"\x1B[34m"
-# define MAGENTA	"\x1B[35m"
-# define CYAN		"\x1B[36m"
-# define WHITE		"\x1B[37m"
+# define RED		"\x1B[31;41;101m"
+# define GREEN		"\x1B[32;42;102m"
+# define YELLOW		"\x1B[33;43;103m"
+# define BLUE		"\x1B[34;44;104m"
+# define MAGENTA	"\x1B[35;45;105m"
+# define CYAN		"\x1B[36;46;106m"
+# define WHITE		"\x1B[40;37m"
+# define BLACK		"\x1B[7;40;100m"
 
 /*
 **STRUCTURES
