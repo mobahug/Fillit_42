@@ -6,7 +6,7 @@
 #    By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 12:35:34 by ghorvath          #+#    #+#              #
-#    Updated: 2022/01/13 14:56:34 by ghorvath         ###   ########.fr        #
+#    Updated: 2022/01/13 15:01:19 by ghorvath         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ INCLUDES		=	-I	includes	-I	libft/includes
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	echo $(OBJS)
+
 	$(CC)	$(CFLAGS)	$(INCLUDES)	$(OBJS)	-o	$(NAME)	$(LIBFLAGS)	$(LIB)
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
@@ -51,7 +51,6 @@ $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 clean:
 	rm	-rf	$(OBJS_DIR)
 	rm	-f	libft/*.o
-
 
 fclean:	clean
 	rm	-f	$(NAME)
