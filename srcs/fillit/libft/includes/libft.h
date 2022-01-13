@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/13 13:12:30 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/13 13:15:34 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,5 @@ void	ft_putcharcolor(char c, char *color);
 size_t	ft_countwords(char const *s, char c);
 void	ft_free_words(char **words, size_t i);
 int		ft_number_lenght(long nb);
-
-/*
-**GET_NEXT_LINE
-*/
 
 #endif
