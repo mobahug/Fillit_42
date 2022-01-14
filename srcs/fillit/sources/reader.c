@@ -6,11 +6,19 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 12:35:00 by ghorvath          #+#    #+#             */
-/*   Updated: 2022/01/13 15:02:22 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/14 08:50:40 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+**check_connection function:
+**
+**This function in the validate function's loop will iterate through
+**on each individual grid, and check/count is there 6 or 8 connection
+**as that's the two option what the given tetriminos can have only.
+*/
 
 static int	check_connection(char *str, int i)
 {
@@ -35,6 +43,17 @@ static int	check_connection(char *str, int i)
 	}
 	return (connections);
 }
+
+/*
+**validate function:
+**
+**The validate function, as from it's name coming also,
+**validating is the individual piece of grid proper one or no.
+**In the while loop we filtering out all the possible errors,
+**and counting the maximum connections and tetrimino pieces,
+**by calling the check_connection function.
+**If everything went as supposed, we adding the piece to the add_tetri funnction.
+*/
 
 static int	validate(char *str, t_tetri *tetri, int *count)
 {
@@ -64,6 +83,14 @@ static int	validate(char *str, t_tetri *tetri, int *count)
 	}
 	return (1);
 }
+
+/*
+**reader function:
+**
+**In the reader function, first we handling the posibble errors
+**then we read through the given file, and validating it,
+**is it correct or no.
+*/
 
 int	reader(int fd, t_tetri *tetri, int *count)
 {

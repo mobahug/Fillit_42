@@ -6,7 +6,7 @@
 #    By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 12:35:34 by ghorvath          #+#    #+#              #
-#    Updated: 2022/01/13 15:01:19 by ghorvath         ###   ########.fr        #
+#    Updated: 2022/01/14 09:03:26 by ghorvath         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ LIBFLAGS		=	-L libft
 LIB				=	-lft
 INCLUDES		=	-I	includes	-I	libft/includes
 
+#By default Moulinette executing only "all" (make),
+#so this way we were able to keep the colorful functionality (see line 45).
+
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
@@ -35,6 +38,9 @@ $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 	make	-sC	libft
 	mkdir	-p	$(OBJS_DIR)
 	$(CC)	$(CFLAGS)	$(INCLUDES)	-c	$<	-o	$@
+
+#Added an extra functionality so the user can also print out
+#the result in a colorful version (make color).
 
 color:	$(NAME_COLOR)
 
