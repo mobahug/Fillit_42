@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+         #
+#    By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 12:35:34 by ghorvath          #+#    #+#              #
-#    Updated: 2022/01/14 09:03:26 by ghorvath         ###   ########.fr        #
+#    Updated: 2022/01/14 13:03:22 by wdonnell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ SRCS			=	encode.c	main.c	printer.c	reader.c	solve.c
 SRCS_DIR		=	./sources/
 SRCS_COLOR		=	encode.c	main.c	color.c	reader.c	solve.c
 OBJS_DIR		=	./objects/
-OBJS			=	$(addprefix	$(OBJS_DIR), $(SRCS:.c=.o))
-OBJS_COLOR		=	$(addprefix	$(OBJS_DIR), $(SRCS_COLOR:.c=.o))
-LIBFLAGS		=	-L libft
+OBJS			=	$(addprefix	$(OBJS_DIR),	$(SRCS:.c=.o))
+OBJS_COLOR		=	$(addprefix	$(OBJS_DIR),	$(SRCS_COLOR:.c=.o))
+LIBFLAGS		=	-L	libft
 LIB				=	-lft
 INCLUDES		=	-I	includes	-I	libft/includes
 
@@ -46,7 +46,7 @@ color:	$(NAME_COLOR)
 
 $(NAME_COLOR):	$(OBJS_COLOR)
 
-	$(CC)	$(CFLAGS)	$(INCLUDES)	$(OBJS_COLOR)	-o	$(NAME)	$(LIBFLAGS)	$(LIB)
+	$(CC)	$(CFLAGS)	$(INCLUDES)	$(OBJS_COLOR)	-o	$(NAME_COLOR)	$(LIBFLAGS)	$(LIB)
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 
@@ -60,6 +60,10 @@ clean:
 
 fclean:	clean
 	rm	-f	$(NAME)
+	rm	-f	libft/libft.a
+
+fclean_color:	clean
+	rm	-f	$(NAME_COLOR)
 	rm	-f	libft/libft.a
 
 re:	fclean all

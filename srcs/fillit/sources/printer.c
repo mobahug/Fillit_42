@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/14 12:21:10 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/14 13:05:09 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 /*
 ** Adds string representation of tetrimino to board.
 ** Shifted by its solution location.
-**add_to_board function:
-**
 **Adding each tetrimino pieces to the board, which already transformed to
 **alphabetical characters.
 **Bitwise way we shifting each piece to the proper position.
@@ -51,9 +49,7 @@ static void	add_to_board(t_tetri *tetri, int size, char *board)
 }
 
 /*
-** Create new "blank" board
-**new board function:
-**
+** Create new "blank" board.
 **Making the board, where we gonna place the tetrimino pieces.
 **Initilaizing everything to 0 and fulfilling the empty board with '.'
 **characters what will replace later each tetrimino.
@@ -76,8 +72,6 @@ static char	*new_board(int size)
 ** Initilizes new board based on size of solution.
 ** Overlays string representation of each tetrimino in turn to board 
 ** Prints board.
-**print_board:
-**
 **The function where we added the above functions into one
 **to create and print out to the terminal the ready board
 **properly, with colorized tetrimino letters.
