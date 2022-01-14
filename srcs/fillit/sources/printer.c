@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/13 14:05:52 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/14 12:10:09 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Adds string representation of tetrimino to board.
+** Shifted by its solution location.
+*/
 
 static void	add_to_board(t_tetri *tetri, int size, char *board)
 {
@@ -38,6 +43,10 @@ static void	add_to_board(t_tetri *tetri, int size, char *board)
 	}
 }
 
+/*
+** Create new "blank" board
+*/
+
 static char	*new_board(int size)
 {
 	char	*board;
@@ -50,6 +59,12 @@ static char	*new_board(int size)
 	board[i] = '\0';
 	return (board);
 }
+
+/*
+** Initilizes new board based on size of solution.
+** Overlays string representation of each tetrimino in turn to board 
+** Prints board.
+*/
 
 void	print_board(t_tetri *tetri, int size)
 {

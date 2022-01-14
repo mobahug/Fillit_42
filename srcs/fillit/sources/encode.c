@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   encode.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:15:26 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/12 15:39:23 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/14 12:16:44 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Shifts tetrimino to its most "upper left" representation.
+*/
 
 static void	shift_shape(char *buf, char *shifted, t_tetri *tetri)
 {
@@ -41,6 +45,11 @@ static void	shift_shape(char *buf, char *shifted, t_tetri *tetri)
 	}
 }
 
+/*
+** With get_shape adds left, width and height data to tetrimino struct.
+** Measured from origin '#' in string representaion.
+*/
+
 static void	sum_lwh(t_tetri *tetri, int j, int *i, int *x)
 {
 	if ((j - *i) % 5 == 0)
@@ -66,6 +75,11 @@ static void	sum_lwh(t_tetri *tetri, int j, int *i, int *x)
 	*i = j;
 }
 
+/*
+** With sum_lwh adds left, width and height data to tetrimino struct.
+** Measured from origin '#' in string representaion.
+*/
+
 static void	get_shape(char *buf, t_tetri *tetri)
 {
 	int	i;
@@ -85,6 +99,10 @@ static void	get_shape(char *buf, t_tetri *tetri)
 	}
 	tetri->width += -tetri->left;
 }
+
+/*
+** Encode string representation of tetrimino to a uint64_t representation.
+*/
 
 static void	encode(char *buf, t_tetri *tetri)
 {
@@ -112,6 +130,10 @@ static void	encode(char *buf, t_tetri *tetri)
 	}
 	tetri->code = code;
 }
+
+/*
+** Get shape specific data for each tetrimino.
+*/
 
 void	add_tetri(t_tetri *tetri, char *buf, int *count)
 {

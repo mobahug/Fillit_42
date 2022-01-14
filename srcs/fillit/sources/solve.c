@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:26:11 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/12 15:39:01 by ghorvath         ###   ########.fr       */
+/*   Updated: 2022/01/14 12:14:58 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Finds minimum starting size based on number of tetriminos
+*/
 
 static int	get_size(int count)
 {
@@ -21,6 +25,11 @@ static int	get_size(int count)
 		size++;
 	return (size);
 }
+
+/*
+** Attempts to find solution given size.
+** Saves final position of each "solved" tetrimino reletive to size.
+*/
 
 static int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
 {
@@ -49,6 +58,10 @@ static int	place_on_map(t_tetri *tetri, int size, uint16_t *map)
 	}
 	return (0);
 }
+
+/*
+** Updates size untill solution is found
+*/
 
 int	solve(t_tetri *tetri, int count, uint16_t *map)
 {

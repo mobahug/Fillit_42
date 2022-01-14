@@ -6,7 +6,7 @@
 /*   By: wdonnell <wdonnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 18:20:59 by wdonnell          #+#    #+#             */
-/*   Updated: 2022/01/13 15:26:06 by wdonnell         ###   ########.fr       */
+/*   Updated: 2022/01/14 12:17:46 by wdonnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,43 @@ static void	color(char c)
 		ft_putcharcolor(c, "white");
 }
 
+/*
+static void	color(t_tetri *tetri, char c)
+{
+	int	index;
+
+	index = (int)(c - 'A');
+	if (c == '.')
+		ft_putcharcolor(c, "white");
+	else if (tetri[index].code == 9223512776490647552ULL \
+		|| tetri[index].code == 61440)
+		ft_putcharcolor(c, "black");
+	else if (tetri[index].code == 3221274624)
+		ft_putcharcolor(c, "yellow");
+	else if (tetri[index].code == 211108380049408 \
+		|| tetri[index].code == 2147540992 \
+		|| tetri[index].code == 70369817968640 \
+		|| tetri[index].code == 3758104576)
+		ft_putcharcolor(c, "cyan");
+	else if (tetri[index].code == 211107306291200 \
+		|| tetri[index].code == 3758129152 \
+		|| tetri[index].code == 140739635888128 \
+		|| tetri[index].code == 536928256)
+		ft_putcharcolor(c, "magenta");
+	else if (tetri[index].code == 1073799168\
+		|| tetri[index].code == 70371965419520 \
+		|| tetri[index].code == 3758112768 \
+		|| tetri[index].code == 140740709613568)
+		ft_putcharcolor(c, "blue");
+	else if (tetri[index].code == 1610661888 \
+		|| tetri[index].code == 140740709597184)
+		ft_putcharcolor(c, "red");
+	else if (tetri[index].code == 3221250048\
+		|| tetri[index].code == 70371965435904 )
+		ft_putcharcolor(c, "green");
+}
+*/
+
 void	print_board(t_tetri *tetri, int size)
 {
 	char	*board;
@@ -78,15 +115,15 @@ void	print_board(t_tetri *tetri, int size)
 
 	board = new_board(size);
 	i = 0;
-	while (tetri->code != 0)
+	while (tetri[i].code != 0)
 	{
-		add_to_board(tetri, size, board);
-		tetri++;
+		add_to_board(&tetri[i], size, board);
+		i++;
 	}
 	i = 0;
 	while (i < size * size)
 	{
-		color(board[i]);
+		color(tetri, board[i]);
 		if (i % size == size - 1)
 			ft_putchar('\n');
 		i++;
