@@ -57,7 +57,7 @@ You can also use `time` argument to check how fast solving the algoritm the task
 
 <img width="772" alt="Screen Shot 2022-01-17 at 8 55 13 AM" src="https://user-images.githubusercontent.com/83179142/149721771-b9c0ea7c-7648-452b-bd14-58db48327007.png">
 
-If you want to get the result in colourful version just enter:
+If you want to get the result in colourful version just enter:1
 
 • `make color`
 • `make fclean_color`
