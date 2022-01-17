@@ -20,23 +20,23 @@ The [reader.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/source
 
 The [encode.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/encode.c) file:
 
-• `Bitwise mode shifting the bits to the its shape`
+    • Bitwise mode shifting the bits to the its shape
 
-• `Measuring each individual tetriminoes width and height`
+    • Measuring each individual tetriminoes width and height
 
-• `Adding these datas to the final function what we call in reader functions`
+    • Adding these datas to the final function what we call in reader functions
 
 The [solve.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/solve.c) file:
 
-• `Using recursive backtracking to check all posibilties for each tetriminoes and get place them to the map`
+    • Using recursive backtracking to check all posibilties for each tetriminoes and get place them to the map
 
-• `For optimalization purposes important that the solving part don't do unnecesary computing except what for it's made`
+    • For optimalization purposes important that the solving part don't do unnecesary computing except what for it's made
 
 The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/printer.c) file:
 
-• `Adding to the board with shifting bitwise operators the tetriminoes`
+    • Adding to the board with shifting bitwise operators the tetriminoes
 
-• `Allocating for the board memory and printing them out`
+    • Allocating for the board memory and printing them out
 
 
 # Valid tetriminos:
@@ -45,25 +45,25 @@ The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sourc
 
 To execute in default the program, just enter:
 
-• `make`
+    • `make`
 
 After compiling type:
 
-`./fillit <valid_file.fillit>`
+    `./fillit <valid_file.fillit>`
 
 You can also use `time` argument to check how fast solving the algoritm the task:
 
-`time ./fillit <valid_file.fillit>`
+    `time ./fillit <valid_file.fillit>`
 
 <img width="772" alt="Screen Shot 2022-01-17 at 8 55 13 AM" src="https://user-images.githubusercontent.com/83179142/149721771-b9c0ea7c-7648-452b-bd14-58db48327007.png">
 
 If you want to get the result in colourful version just enter:
 
-• `make color`
+    • `make color`
 
 To remove it:
 
-• `make fclean_color`
+    • `make fclean_color`
 
 The purpose of this was, to see better each tetriminoes, and to be accepted by the 42 school project checker AI, had to modifiy the [Makefile](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/Makefile) and split to two part, so by default the result will be black and white, but available the colorful version as well.
 
