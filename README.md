@@ -6,8 +6,11 @@ First the program reads each tetriminos from its given file, and during the read
 The `reader.c` file:
 
 • `checking for '#' connections and counting them (must be 6 or 8)`
+
 • `checking is it a valid character ('.' and/or '#')`
+
 • `checking is end of line '\n'`
+
 • `checking the lines length`
 
 # Valid tetriminos:
