@@ -62,6 +62,6 @@ If you want to get the result in colourful version just enter:
 • `make color`
 • `make fclean_color`
 
-The purpose of this was, to see better each tetriminoes, and to be accepted by the 42 school project checker AI, had to modifiy the `[Makefile]`https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/Makefile
+The purpose of this was, to see better each tetriminoes, and to be accepted by the 42 school project checker AI, had to modifiy the ![Makefile](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/Makefile)
 
 <img width="847" alt="Screen Shot 2022-01-17 at 8 58 07 AM" src="https://user-images.githubusercontent.com/83179142/149722069-b00eb82b-247b-4abe-aa11-22858f1859a9.png">
