@@ -43,8 +43,9 @@ The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sourc
 
 <img width="141" alt="Screen Shot 2022-01-17 at 10 10 07 AM" src="https://user-images.githubusercontent.com/83179142/149731628-443d7714-a11b-4d92-8ce3-31abbcde5add.png">
 
-Maximum valid grids : `26`
-According the english alphabets.
+Maximum valid grids: 26
+
+According to the English alphabet.
 
 To execute in default the program, just enter:
 
