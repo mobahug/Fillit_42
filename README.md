@@ -45,25 +45,25 @@ The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sourc
 
 To execute in default the program, just enter:
 
-    • `make`
+    make
 
 After compiling type:
 
-    `./fillit <valid_file.fillit>`
+    ./fillit <valid_file.fillit>
 
 You can also use the `time` argument to check how fast solving the algorithm the task:
 
-    `time ./fillit <valid_file.fillit>`
+    time ./fillit <valid_file.fillit>
 
 <img width="772" alt="Screen Shot 2022-01-17 at 8 55 13 AM" src="https://user-images.githubusercontent.com/83179142/149721771-b9c0ea7c-7648-452b-bd14-58db48327007.png">
 
 If you want to get the result in a colourful version just enter:
 
-    • `make color`
+    make color
 
 To remove it:
 
-    • `make fclean_color`
+    make fclean_color
 
 The purpose of this was, to see better each tetromino, and to be accepted by the 42 school project checker AI, had to modify the [Makefile](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/Makefile) and split into two-part, so by default the result will be black and white, but available the colourful version as well.
 
