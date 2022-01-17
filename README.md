@@ -1,6 +1,6 @@
-# Not Tetris, but space optimization algorithm!
+# Not Tetris, but space optimization algorithm
 
-# HOW IT WORKS?
+### HOW IT WORKS?
 
 First, the program reads each tetromino from its given file, and during the reading, process checking is it a valid piece or not.
 If it's not, then the program outputting `error`.
