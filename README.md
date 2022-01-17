@@ -39,7 +39,7 @@ The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sourc
     • Allocating for the board memory and printing them out
 
 
-# Valid tetriminos:
+### Valid tetriminos:
 
 <img width="141" alt="Screen Shot 2022-01-17 at 10 10 07 AM" src="https://user-images.githubusercontent.com/83179142/149731628-443d7714-a11b-4d92-8ce3-31abbcde5add.png">
 
