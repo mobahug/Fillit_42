@@ -10,13 +10,13 @@ to get the smallests square from it. (Place the pieces that between them are no 
 
 The [reader.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/reader.c) file:
 
-• Checking for '#' connections and counting them (must be 6 or 8)
+    • Checking for '#' connections and counting them (must be 6 or 8)
 
-• Checking is it a valid character ('.' and/or '#')
+    • Checking is it a valid character ('.' and/or '#')
 
-• Checking is end of line '\n'
+    • Checking is end of line '\n'
 
-• Checking the lines length
+    • Checking the lines length
 
 The [encode.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/encode.c) file:
 
