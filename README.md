@@ -10,13 +10,13 @@ to get the smallests square from it. (Place the pieces that between them are no 
 
 The [reader.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/reader.c) file:
 
-• `Checking for '#' connections and counting them (must be 6 or 8)`
+• Checking for '#' connections and counting them (must be 6 or 8)
 
-• `Checking is it a valid character ('.' and/or '#')`
+• Checking is it a valid character ('.' and/or '#')
 
-• `Checking is end of line '\n'`
+• Checking is end of line '\n'
 
-• `Checking the lines length`
+• Checking the lines length
 
 The [encode.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/encode.c) file:
 
@@ -43,7 +43,7 @@ The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sourc
 
 <img width="141" alt="Screen Shot 2022-01-17 at 10 10 07 AM" src="https://user-images.githubusercontent.com/83179142/149731628-443d7714-a11b-4d92-8ce3-31abbcde5add.png">
 
-To execute in default the program, just enter 'make':
+To execute in default the program, just enter:
 
 • `make`
 
