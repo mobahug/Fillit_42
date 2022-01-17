@@ -8,7 +8,7 @@ After the valid piece get its shape and with all the datas transforming each pie
 to get the smallests square from it. (Place the pieces that between them are no at all/or just small gap in the shortest amount of time.)
 (You can find comments as well with small explanation in the codes.)
 
-The `reader.c` file:
+The [reader.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/reader.c) file:
 
 • `Checking for '#' connections and counting them (must be 6 or 8)`
 
@@ -18,7 +18,7 @@ The `reader.c` file:
 
 • `Checking the lines length`
 
-The `encode.c` file:
+The [encode.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/encode.c) file:
 
 • `Bitwise mode shifting the bits to the its shape`
 
@@ -26,13 +26,13 @@ The `encode.c` file:
 
 • `Adding these datas to the final function what we call in reader functions`
 
-The `solve.c` file:
+The [solve.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/solve.c) file:
 
 • `Using recursive backtracking to check all posibilties for each tetriminoes and get place them to the map`
 
 • `For optimalization purposes important that the solving part don't do unnecesary computing except what for it's made`
 
-The `printer.c` file:
+The [printer.c](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/sources/printer.c) file:
 
 • `Adding to the board with shifting bitwise operators the tetriminoes`
 
@@ -43,7 +43,7 @@ The `printer.c` file:
 
 <img width="141" alt="Screen Shot 2022-01-17 at 10 10 07 AM" src="https://user-images.githubusercontent.com/83179142/149731628-443d7714-a11b-4d92-8ce3-31abbcde5add.png">
 
-To execute the default fillit just enter 'make':
+To execute in default the program, just enter 'make':
 
 • `make`
 
@@ -60,8 +60,11 @@ You can also use `time` argument to check how fast solving the algoritm the task
 If you want to get the result in colourful version just enter:
 
 • `make color`
+
+To remove it:
+
 • `make fclean_color`
 
-The purpose of this was, to see better each tetriminoes, and to be accepted by the 42 school project checker AI, had to modifiy the [Makefile](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/Makefile)
+The purpose of this was, to see better each tetriminoes, and to be accepted by the 42 school project checker AI, had to modifiy the [Makefile](https://github.com/mobahug/fillit_42/blob/main/srcs/fillit/Makefile) and split to two part, so by default the result will be black and white, but available the colorful version as well.
 
 <img width="847" alt="Screen Shot 2022-01-17 at 8 58 07 AM" src="https://user-images.githubusercontent.com/83179142/149722069-b00eb82b-247b-4abe-aa11-22858f1859a9.png">
