@@ -1,6 +1,6 @@
 # fillit_42
 
-#HOW IT WORKS?
+# HOW IT WORKS?
 
 First the program reads each tetriminos from its given file, and during the reading checking is it a valid piece or no.
 The `reader.c` file:
