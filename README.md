@@ -47,8 +47,6 @@ Maximum valid grids: `26`
 
 According to the English alphabet.
 
-
-
 To execute in default the program, just enter:
 
     make
