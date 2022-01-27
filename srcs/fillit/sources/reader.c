@@ -74,7 +74,7 @@ static int	validate(char *str, t_tetri *tetri, int *count)
 			total_connections += check_connection(str, i);
 		i++;
 	}
-	if (total_connections < 6 || hash_counter != 4 || *count > 26)
+	if (total_connections < 6 || hash_counter != 4 || *count > 25)
 		return (0);
 	else
 	{
